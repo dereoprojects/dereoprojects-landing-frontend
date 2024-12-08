@@ -1,3 +1,7 @@
+// src/app/layout.tsx
+import * as React from "react";
+import { ThemeProvider, CssBaseline } from "@mui/material";
+import theme from "../theme"; // Import the theme you created
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -20,15 +24,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider theme={theme}>
+          <CssBaseline /> {/* Normalize and apply global styles */}
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -1,12 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
+/* Define root variables for light mode */
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
+/* Define root variables for dark mode */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -14,8 +12,19 @@
   }
 }
 
+/* Apply root variables to the body */
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--foreground); /* Text color */
+  background-color: var(--background); /* Background color */
+  font-family: Arial, Helvetica, sans-serif; /* Font family */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Reset all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
