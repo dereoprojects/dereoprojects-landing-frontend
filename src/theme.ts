@@ -11,11 +11,11 @@ const theme = createTheme({
     },
     background: {
       default: '#F8D8BA', // Background color
-      paper: '#FFFFFF',   // Paper components color
+      paper: '#5C3C35',   // Paper components color
     },
     text: {
-      primary: '#3C2F2F', // Text color
-      secondary: '#7B5045',
+      primary: '#5C3C35', // Text color
+      secondary: '#F8D8BA',
     },
   },
   typography: {

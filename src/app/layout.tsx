@@ -13,6 +13,7 @@ import theme from "../theme"; // Your custom Material-UI theme
 import type { Metadata } from "next";
 import "./globals.css";
 import Brand from "@/components/Brand";
+import ResponsiveAppBar from "@/components/ResponsiveAppBar";
 
 export const metadata: Metadata = {
   title: "Dereoprojects Landing",
@@ -29,19 +30,10 @@ export default function RootLayout({
       <body>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <AppBar position="static" color="primary">
-            <Toolbar>
-              <a href="/">
-                <Brand />
-              </a>
-              <Button color="inherit" component={Link} href="/about">
-                About
-              </Button>
-              <Button color="inherit" component={Link} href="/contact">
-                Contact
-              </Button>
-            </Toolbar>
-          </AppBar>
+          <ResponsiveAppBar>
+
+          </ResponsiveAppBar>
+          
           <main>{children}</main>
         </ThemeProvider>
       </body>
