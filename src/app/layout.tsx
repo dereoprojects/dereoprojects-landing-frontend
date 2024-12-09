@@ -1,19 +1,11 @@
-// src/app/layout.tsx
 import * as React from "react";
-import {
-  ThemeProvider,
-  CssBaseline,
-  AppBar,
-  Toolbar,
-  Typography,
-  Button,
-} from "@mui/material";
-import Link from "next/link";
+import { ThemeProvider, CssBaseline, Toolbar } from "@mui/material";
 import theme from "../theme"; // Your custom Material-UI theme
 import type { Metadata } from "next";
 import "./globals.css";
-import Brand from "@/components/Brand";
 import ResponsiveAppBar from "@/components/ResponsiveAppBar";
+import MainWithDrawer from "./MainWithDrawer";
+import ClientRoot from "./ClientRoot";
 
 export const metadata: Metadata = {
   title: "Dereoprojects Landing",
@@ -30,11 +22,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <ResponsiveAppBar>
-
-          </ResponsiveAppBar>
-          
-          <main>{children}</main>
+          <ClientRoot>{children}</ClientRoot>
         </ThemeProvider>
       </body>
     </html>

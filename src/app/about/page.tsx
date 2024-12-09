@@ -1,8 +1,26 @@
+"use client";
+
+import { Container } from "@mui/material";
+
 export default function AboutPage() {
-    return (
-      <div>
-        <h1>About Us</h1>
-        <p>Welcome to the About page!</p>
-      </div>
-    );
-  }
+  return (
+    <Container sx={{ height: "2000px" }}>
+      <h1>About page</h1>
+      <p>Welcome to the About page!</p>
+      <h1>About page</h1>
+      <p>Welcome to the About page!</p>
+      <h1>About page</h1>
+      <p>Welcome to the About page!</p>
+      <h1>About page</h1>
+      <p>Welcome to the About page!</p>
+      <h1>About page</h1>
+      <p>Welcome to the About page!</p>
+      <h1>About page</h1>
+      <p>Welcome to the About page!</p>
+      <h1>About page</h1>
+      <p>Welcome to the About page!</p>
+      <h1>About page</h1>
+      <p>Welcome to the About page!</p>
+    </Container>
+  );
+}
