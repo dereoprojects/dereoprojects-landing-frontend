@@ -27,7 +27,7 @@ export default function AboutPage() {
         display: "flex",
         flexDirection: "column",
         position: "relative",
-        width: "100%"
+        width: "100%",
       }}
     >
       {/* Section 1: Who I Am */}
@@ -49,7 +49,11 @@ export default function AboutPage() {
         animation={<motion.div className={styles["circle-animation"]} />}
       />
 
-      <Wave selectedWave={1} color="secondary.main" backgroundColor="primary.main"></Wave>
+      <Wave
+        selectedWave={1}
+        color="secondary.main"
+        backgroundColor="primary.main"
+      ></Wave>
 
       {/* Section 3: My Ideals */}
       <Section
@@ -57,7 +61,11 @@ export default function AboutPage() {
         text="I believe in continuous learning, creating a positive impact through technology, and fostering meaningful connections. My goal is to contribute to innovative solutions that make life better."
         animation={<motion.div className={styles["circle-animation"]} />}
       />
-      <Wave selectedWave={2} color="primary.main" backgroundColor="secondary.main"></Wave>
+      <Wave
+        selectedWave={2}
+        color="primary.main"
+        backgroundColor="secondary.main"
+      ></Wave>
 
       {/* Section 4: Hobbies */}
       <Section
@@ -109,6 +117,17 @@ const Section = ({
   const scaleLeave = useTransform(exitScrollProgress, [0.2, 1], [1, 1.4]);
   const opacityLeave = useTransform(exitScrollProgress, [0.2, 0.7], [1, 0]);
   const textOpacityLeave = useTransform(exitScrollProgress, [0.2, 0.7], [1, 0]);
+
+  const animationXEnter = useTransform(
+    enterScrollProgress,
+    [0, 1],
+    ["75px", "0px"]
+  );
+  const animationXLeave = useTransform(
+    exitScrollProgress,
+    [0.2, 1],
+    ["0px", "75px"]
+  );
 
   return (
     <Box
@@ -173,12 +192,18 @@ const Section = ({
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          x: animationXEnter,
+          opacity: opacityEnter,
         }}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        variants={sectionVariants}
       >
-        {animation}
+        <motion.div
+          style={{
+            x: animationXLeave,
+            opacity: opacityLeave,
+          }}
+        >
+          {animation}
+        </motion.div>
       </motion.div>
     </Box>
   );
