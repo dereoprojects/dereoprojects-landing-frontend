@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
-import Brand from "@/components/Brand";
+import Brand from "@/components/Brand/Brand";
 import { motion } from "framer-motion";
 import Link from "next/link";
 interface ResponsiveAppBarProps {
@@ -50,7 +50,7 @@ const ResponsiveAppBar: React.FC<ResponsiveAppBarProps> = ({drawerChange, isDraw
         opacity: scrollDirection === "up" ? 1 : 0, // Fade in or out
       }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
-      style={{ position: "sticky", top: 0, zIndex: 1400 }}
+      style={{ position: "sticky", top: 0, zIndex: 1400, width: "100%"}}
     >
       <AppBar position="fixed" color="primary">
         <Toolbar
@@ -81,12 +81,13 @@ const ResponsiveAppBar: React.FC<ResponsiveAppBarProps> = ({drawerChange, isDraw
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+              height: { xs: "55%", sm: "100%" }, //this shit doesnt works
             }}
 
             onClick={ () => drawerChange(false)}
           >
             <Link href="/">
-              <Brand />
+              <Brand shining />
             </Link>
           </Box>
 

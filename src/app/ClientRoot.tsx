@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import { Toolbar } from "@mui/material";
-import ResponsiveAppBar from "@/components/ResponsiveAppBar";
 import MainWithDrawer from "./MainWithDrawer";
+import ResponsiveAppBar from "@/components/ResponsiveAppBar/ResponsiveAppBar";
 
 export default function ClientRoot({
   children,
@@ -20,7 +20,7 @@ export default function ClientRoot({
     <>
       <ResponsiveAppBar isDrawerOpen={isDrawerOpen} drawerChange={handleDrawerChange} />
       {/* Spacer to account for AppBar's height */}
-      <Toolbar />
+      <Toolbar sx={{width: "100%"}} />
       <MainWithDrawer
         children={children}
         drawerOpen={isDrawerOpen}

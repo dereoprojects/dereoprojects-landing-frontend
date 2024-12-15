@@ -1,0 +1,29 @@
+.circle-animation {
+  background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.progress {
+  position: sticky;
+  top: 0;
+  width: 80px;
+  height: 80px;
+  margin: 0;
+  padding: 0;
+}
+
+.progress svg {
+  transform: translateX(-100px) rotate(-90deg);
+}
+
+.progress circle {
+  stroke-dashoffset: 0;
+  stroke-width: 5%;
+  fill: none;
+}
+
+.progress .indicator {
+  stroke: red;
+}

@@ -18,7 +18,10 @@ const MainWithDrawer: React.FC<MainWithDrawerProps> = ({
   drawerChange,
 }) => {
   return (
-    <Container component="main">
+    <Container
+      component="main"
+      disableGutters
+    >
       {children}
       <Drawer
         sx={{
@@ -33,7 +36,7 @@ const MainWithDrawer: React.FC<MainWithDrawerProps> = ({
         open={drawerOpen}
         onClose={() => drawerChange(false)}
       >
-        <Toolbar sx={{width: 0}}></Toolbar>
+        <Toolbar sx={{ width: 0 }}></Toolbar>
         <Box sx={{ width: 200, padding: 2 }}>
           <Button
             component={Link}
