@@ -18,16 +18,16 @@ export default function AboutPage() {
   return (
     <Container
       component={motion.div}
+      maxWidth={false}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 2 }}
       disableGutters
       sx={{
-        mt: 2,
         display: "flex",
         flexDirection: "column",
         position: "relative",
-        width: "100%",
+        width: "100%"
       }}
     >
       {/* Section 1: Who I Am */}
@@ -39,6 +39,7 @@ export default function AboutPage() {
         text="Hi, I’m Oguzhan Dere, a software developer passionate about creating user-friendly applications and exploring the endless possibilities of technology."
         animation={<motion.div className={styles["circle-animation"]} />}
       />
+      <Wave color="primary.main" backgroundColor="secondary.main"></Wave>
       {/* Section 2: What This Page Is For */}
       <Section
         reversed
@@ -48,12 +49,15 @@ export default function AboutPage() {
         animation={<motion.div className={styles["circle-animation"]} />}
       />
 
+      <Wave selectedWave={1} color="secondary.main" backgroundColor="primary.main"></Wave>
+
       {/* Section 3: My Ideals */}
       <Section
         title="My Ideals and What I Aim in Life"
         text="I believe in continuous learning, creating a positive impact through technology, and fostering meaningful connections. My goal is to contribute to innovative solutions that make life better."
         animation={<motion.div className={styles["circle-animation"]} />}
       />
+      <Wave selectedWave={2} color="primary.main" backgroundColor="secondary.main"></Wave>
 
       {/* Section 4: Hobbies */}
       <Section
@@ -112,9 +116,10 @@ const Section = ({
       sx={{
         display: "flex",
         alignItems: "center",
-        justifyContent: "space-between",
         minHeight: "70vh",
+        width: "100%", //When i make this 500 px for example, issue is gone
         position: "relative",
+        overflow: "hidden", // Prevent content overflow
         backgroundColor: reversed ? "primary.main" : "secondary.main",
       }}
     >

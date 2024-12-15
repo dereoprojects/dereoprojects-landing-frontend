@@ -18,20 +18,30 @@ const Wave: React.FC<{
   const WaveComponent = waves[selectedWave % waves.length]; // Ensure deterministic
 
   return (
-    <SvgIcon
-      component={WaveComponent} // Pass the dynamically selected SVG component
-      inheritViewBox
-      fontSize="large"
+    <Box
       sx={{
-        color,
-        width: "100%",
-        height: "auto",
         backgroundColor,
-        margin: 0,
-        padding: 0,
-        display: "block",
+        width: "100%",
+        height: "fit-content",
+        marginBottom: "-1px",
       }}
-    />
+    >
+      {/* this marginBottom is why i sometimes hate frontend */}
+      <SvgIcon
+        component={WaveComponent} // Pass the dynamically selected SVG component
+        inheritViewBox
+        fontSize="large"
+        sx={{
+          color,
+          width: "100%",
+          height: "auto",
+
+          margin: 0,
+          padding: 0,
+          display: "block",
+        }}
+      />
+    </Box>
   );
 };
 
