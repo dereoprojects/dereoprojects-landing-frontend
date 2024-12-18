@@ -9,11 +9,6 @@ import PublicIcon from "@mui/icons-material/Public";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Wave from "@/components/Wave/Wave";
 
-const sectionVariants = {
-  hidden: { opacity: 0, x: 50 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
-};
-
 export default function AboutPage() {
   return (
     <Container
