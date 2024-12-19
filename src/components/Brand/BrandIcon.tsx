@@ -3,7 +3,7 @@ import SvgIcon from "@mui/material/SvgIcon";
 // Import SVGs as React components
 import DereoIcon from "../../../public/assets/logo/dereo_icon.svg";
 
-const BrandIcon = ({ shining=false }: { shining: boolean }) => {
+const BrandIcon = ({ shining=false }: { shining?: boolean }) => {
   if (shining) {
     return <ShiningIcon />;
   }

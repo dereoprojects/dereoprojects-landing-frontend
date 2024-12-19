@@ -1,5 +1,7 @@
 "use client";
 import { createTheme } from "@mui/material/styles";
+import { Courgette, Poppins, Water_Brush } from "next/font/google";
+
 declare module "@mui/material/styles/createPalette" {
   interface Palette {
     accent: Palette["primary"];
@@ -8,6 +10,11 @@ declare module "@mui/material/styles/createPalette" {
     accent?: PaletteOptions["primary"];
   }
 }
+
+const waterBrush = Water_Brush({ subsets: ["latin"], weight: "400" });
+const courgette = Courgette({ subsets: ["latin"], weight: "400" });
+const poppins = Poppins({ subsets: ["latin"], weight: "400" });
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -29,7 +36,28 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "'Roboto', 'Arial', sans-serif",
+    fontFamily: `${poppins.style.fontFamily}, Arial, sans-serif`,
+    h1: {
+      fontFamily: waterBrush.style.fontFamily,
+      fontSize: "5rem",
+    },
+    h2: {
+      fontFamily: waterBrush.style.fontFamily,
+      fontSize: "3.5rem",
+    },
+    h3: {
+      fontFamily: courgette.style.fontFamily,
+      fontSize: "2.4rem",
+      fontWeight: "bold"
+    },
+    body1: {
+      fontFamily: courgette.style.fontFamily,
+      fontSize: "1rem",
+    },
+    body2: {
+      fontFamily: courgette.style.fontFamily,
+      fontSize: "0.875rem",
+    },
   },
 });
 

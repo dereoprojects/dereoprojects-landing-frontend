@@ -14,9 +14,10 @@ export const ShiningIcon = () => (
       duration: 3,
       repeat: Infinity, 
       repeatDelay: 10,
+      delay: 5,
       ease: "easeInOut",
     }}
-    style={{ height: "40px", width: "auto" }}
+    style={{ height: "100%", width: "auto" }}
   >
     <SvgIcon
       component={DereoIcon} 

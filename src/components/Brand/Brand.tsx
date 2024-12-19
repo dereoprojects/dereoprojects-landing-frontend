@@ -8,6 +8,7 @@ import SvgIcon from "@mui/material/SvgIcon";
 import DereoIcon from "../../../public/assets/logo/dereo_icon.svg";
 import DereoText from "../../../public/assets/logo/dereo_text.svg";
 import BrandIcon from "./BrandIcon";
+import { Container } from "@mui/material";
 
 interface BrandProps {
   shining?: boolean;
@@ -17,7 +18,9 @@ const Brand: React.FC<BrandProps> = ({ shining = false }) => {
   return (
     <Box display="flex" alignItems="center" gap={1}>
       {/* Dereo Icon */}
-      <BrandIcon shining={shining} />
+      <Container disableGutters sx={{height: "40px"}}>
+        <BrandIcon shining={shining} />
+      </Container>
       {/* Dereo Text */}
       <SvgIcon
         component={DereoText} // Pass the SVG component

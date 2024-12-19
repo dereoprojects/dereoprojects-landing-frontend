@@ -159,8 +159,7 @@ const Section = ({
               {icon}
               <Typography
                 component="div"
-                variant="h5"
-                fontWeight="bold"
+                variant="h3"
                 sx={{ color: reversed ? "secondary.main" : "primary.main" }}
               >
                 {title}

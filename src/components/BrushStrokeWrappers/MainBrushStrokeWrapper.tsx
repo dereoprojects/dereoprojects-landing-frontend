@@ -13,7 +13,7 @@ interface BrushStrokeWrapperProps {
   children: ReactNode;
 }
 
-const BrushStrokeWrapper: React.FC<BrushStrokeWrapperProps> = ({
+const MainBrushStrokeWrapper: React.FC<BrushStrokeWrapperProps> = ({
   children,
 }) => {
   const { rive, RiveComponent } = useRive({
@@ -95,4 +95,4 @@ const BrushStrokeWrapper: React.FC<BrushStrokeWrapperProps> = ({
   );
 };
 
-export default BrushStrokeWrapper;
+export default MainBrushStrokeWrapper;
