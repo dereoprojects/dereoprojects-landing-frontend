@@ -20,7 +20,7 @@ export default function Home() {
         width: "100%",
       }}
     >
-      <Box sx={{ width: "100%", height: "70vh", marginTop: "0px" }}>
+      <Box sx={{ width: "100%", height: "70vh", marginTop: 1 }}>
         <MainBrushStrokeWrapper>
           <Container
             disableGutters
@@ -57,26 +57,27 @@ export default function Home() {
             </Container>
 
             <Container
+            id="test"
               disableGutters
               sx={{
                 position: "absolute",
-                bottom: "3%",
+                top: "70%",
                 left: "60%",
-                width: "10%",
-                height: "auto",
+                height: "20%",
+                width: "45%",
                 transform: "rotate(-30deg)",
               }}
             >
               <Typography
                 color="primary.main"
                 variant="h1"
-                sx={{ display: "flex", gap: 0.5 }}
+                sx={{ display: "flex", gap: 0.5, fontSize: "clamp(1rem, 12vw, 5rem)"}}
               >
                 {"Projects".split("").map((char, index) => (
                   <motion.span
                     key={index}
-                    initial={{ y: 50, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
+                    initial={{ y: 50, opacity: 0}}
+                    animate={{ y: 0, opacity: 1}}
                     transition={{
                       duration: 0.5,
                       delay: 4.5 + index * 0.1, // Delay each letter
