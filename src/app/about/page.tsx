@@ -110,7 +110,7 @@ const Section = ({
   const xLeave = useTransform(exitScrollProgress, [0.2, 1], ["0px", "-75px"]); // Move horizontally
   const yLeave = useTransform(exitScrollProgress, [0.2, 1], ["0px", "-75px"]); // Move horizontally
   const scaleLeave = useTransform(exitScrollProgress, [0.2, 1], [1, 1.4]);
-  const opacityLeave = useTransform(exitScrollProgress, [0.2, 0.7], [1, 0]);
+  const opacityLeave = useTransform(exitScrollProgress, [0.2, 0.6], [1, 0]);
   const textOpacityLeave = useTransform(exitScrollProgress, [0.2, 0.7], [1, 0]);
 
   const animationXEnter = useTransform(

@@ -10,7 +10,11 @@ import { motion } from "framer-motion";
 export default function Home() {
   return (
     <Container
+      component={motion.div}
       maxWidth={false}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 2 }}
       disableGutters
       sx={{
         display: "flex",
@@ -28,6 +32,7 @@ export default function Home() {
               width: "100%",
               height: "100%",
               position: "relative", // Ensure child items are positioned relative to this container
+              overflow: "hidden",
             }}
           >
             <Container
@@ -57,7 +62,6 @@ export default function Home() {
             </Container>
 
             <Container
-            id="test"
               disableGutters
               sx={{
                 position: "absolute",
@@ -71,13 +75,17 @@ export default function Home() {
               <Typography
                 color="primary.main"
                 variant="h1"
-                sx={{ display: "flex", gap: 0.5, fontSize: "clamp(1rem, 12vw, 5rem)"}}
+                sx={{
+                  display: "flex",
+                  gap: 0.5,
+                  fontSize: "clamp(1rem, 12vw, 5rem)",
+                }}
               >
                 {"Projects".split("").map((char, index) => (
                   <motion.span
                     key={index}
-                    initial={{ y: 50, opacity: 0}}
-                    animate={{ y: 0, opacity: 1}}
+                    initial={{ y: 50, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
                     transition={{
                       duration: 0.5,
                       delay: 4.5 + index * 0.1, // Delay each letter

@@ -98,6 +98,9 @@ const ResponsiveAppBar: React.FC<ResponsiveAppBarProps> = ({drawerChange, isDraw
               gap: 2,
             }}
           >
+            <Button component={Link} color="inherit" href="/projects">
+              Projects
+            </Button>
             <Button component={Link} color="inherit" href="/about">
               About
             </Button>
