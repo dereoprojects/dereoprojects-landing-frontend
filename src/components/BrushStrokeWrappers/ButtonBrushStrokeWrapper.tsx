@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import React, {
   ReactNode,
   ElementType,
@@ -6,25 +5,43 @@ import React, {
   useRef,
   useState,
 } from "react";
-import Rive, { useRive, Layout, Fit, Alignment } from "@rive-app/react-canvas";
+import Rive, {
+  useRive,
+  Layout,
+  Fit,
+  Alignment,
+  useStateMachineInput,
+} from "@rive-app/react-canvas";
 import { calculateActualDimensions } from "@/utils/helpers";
 
-interface MainBrushStrokeWrapperProps {
+interface ButtonBrushStrokeWrapperProps {
   children: ReactNode;
+  reversed?: boolean;
 }
 
-const MainBrushStrokeWrapper: React.FC<MainBrushStrokeWrapperProps> = ({
+const ButtonBrushStrokeWrapper: React.FC<ButtonBrushStrokeWrapperProps> = ({
   children,
+  reversed = false,
 }) => {
   const { rive, RiveComponent } = useRive({
-    src: "/assets/brushes/brush_1.riv",
+    src: "/assets/brushes/brush_2.riv",
     layout: new Layout({ fit: Fit.Contain, alignment: Alignment.Center }),
-    autoplay: true,
+    stateMachines: "State Machine 1",
+    artboard: reversed ? "brush_2 reversed" : "brush_2",
+    autoplay: false,
   });
+
+  const input = useStateMachineInput(rive, "State Machine 1", "isReversed", reversed);
+
+  React.useEffect(() => {
+    if (input) {
+        input.value = reversed;
+        rive?.play();
+    }
+  }, [input]);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const [artworkSize, setArtworkSize] = useState({ width: 0, height: 0 });
-
 
   useEffect(() => {
     const container = containerRef.current;
@@ -95,4 +112,4 @@ const MainBrushStrokeWrapper: React.FC<MainBrushStrokeWrapperProps> = ({
   );
 };
 
-export default MainBrushStrokeWrapper;
+export default ButtonBrushStrokeWrapper;

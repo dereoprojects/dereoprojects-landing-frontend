@@ -8,17 +8,22 @@ import {
   Drawer,
   Box,
   Button,
+  Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import MenuOpenIcon from '@mui/icons-material/MenuOpen';
+import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import Brand from "@/components/Brand/Brand";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import AppbarNavigation from "./AppbarNavigation";
 interface ResponsiveAppBarProps {
   drawerChange: (open: boolean) => void; // Define drawerChange as a function type
   isDrawerOpen: boolean;
 }
-const ResponsiveAppBar: React.FC<ResponsiveAppBarProps> = ({drawerChange, isDrawerOpen}) => {
+const ResponsiveAppBar: React.FC<ResponsiveAppBarProps> = ({
+  drawerChange,
+  isDrawerOpen,
+}) => {
   const [scrollDirection, setScrollDirection] = useState<"up" | "down" | null>(
     "up"
   );
@@ -41,7 +46,6 @@ const ResponsiveAppBar: React.FC<ResponsiveAppBarProps> = ({drawerChange, isDraw
     };
   }, [lastScrollY]);
 
-
   return (
     <motion.div
       initial={{ y: 0, opacity: 1 }}
@@ -50,14 +54,19 @@ const ResponsiveAppBar: React.FC<ResponsiveAppBarProps> = ({drawerChange, isDraw
         opacity: scrollDirection === "up" ? 1 : 0, // Fade in or out
       }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
-      style={{ position: "sticky", top: 0, zIndex: 1400, width: "100%"}}
+      style={{ position: "sticky", top: 0, zIndex: 1400, width: "100%" }}
     >
-      <AppBar position="fixed" color="primary">
+      <AppBar
+        position="fixed"
+        sx={{ display: "flex", flexDirection: "row" }}
+        color="primary"
+      >
         <Toolbar
           sx={{
             display: "flex",
             justifyContent: { xs: "center", sm: "space-between" },
             alignItems: "center",
+            width: "100%",
           }}
         >
           {/* Menu Icon for Drawer (only visible on small screens) */}
@@ -75,16 +84,17 @@ const ResponsiveAppBar: React.FC<ResponsiveAppBarProps> = ({drawerChange, isDraw
             {isDrawerOpen ? <MenuOpenIcon /> : <MenuIcon />}
           </IconButton>
 
-          {/* Brand */}
           <Box
+            component={motion.div}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             sx={{
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              height: { xs: "55%", sm: "100%" }, //this shit doesnt works
+              height: { xs: "55%", sm: "100%" },
             }}
-
-            onClick={ () => drawerChange(false)}
+            onClick={() => drawerChange(false)}
           >
             <Link href="/">
               <Brand shining />
@@ -94,24 +104,24 @@ const ResponsiveAppBar: React.FC<ResponsiveAppBarProps> = ({drawerChange, isDraw
           {/* Buttons for larger screens */}
           <Box
             sx={{
+              height: "100%",
               display: { xs: "none", sm: "flex" },
-              gap: 2,
+              flexDirection: "row",
             }}
           >
-            <Button component={Link} color="inherit" href="/projects">
-              Projects
-            </Button>
-            <Button component={Link} color="inherit" href="/about">
-              About
-            </Button>
-            <Button component={Link} color="inherit" href="/contact">
-              Contact
-            </Button>
+            <AppbarNavigation
+              text="Projects"
+              value="/projects"
+            ></AppbarNavigation>
+            <AppbarNavigation text="About" value="/about"></AppbarNavigation>
+            <AppbarNavigation
+              text="Contact"
+              value="/contact"
+            ></AppbarNavigation>
           </Box>
         </Toolbar>
       </AppBar>
     </motion.div>
-    
   );
 };
 

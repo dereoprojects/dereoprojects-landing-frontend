@@ -18,7 +18,7 @@ const MainWithDrawer: React.FC<MainWithDrawerProps> = ({
   drawerChange,
 }) => {
   return (
-    <Container component="main" disableGutters maxWidth={false} >
+    <Container component="main" disableGutters sx={{height: {xs: "calc( 100vh - 56px )", sm: "calc( 100vh - 64px )" }}} maxWidth={false} >
       {children}
       <Drawer
         sx={{

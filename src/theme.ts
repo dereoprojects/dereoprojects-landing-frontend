@@ -48,7 +48,15 @@ const theme = createTheme({
     h3: {
       fontFamily: courgette.style.fontFamily,
       fontSize: "2.4rem",
-      fontWeight: "bold"
+      fontWeight: "bold",
+    },
+    h4: {
+      fontFamily: courgette.style.fontFamily,
+      fontSize: "1rem",
+    },
+    h5: {
+      fontFamily: courgette.style.fontFamily,
+      fontSize: "1.5rem",
     },
     body1: {
       fontFamily: courgette.style.fontFamily,

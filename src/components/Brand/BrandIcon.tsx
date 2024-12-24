@@ -13,6 +13,7 @@ const BrandIcon = ({ shining=false }: { shining?: boolean }) => {
       component={DereoIcon} // Pass the SVG component
       inheritViewBox
       fontSize="large"
+      titleAccess=""
       sx={{ color: "secondary.main", height: "100%", width: "auto" }}
     />
   );
