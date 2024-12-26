@@ -10,6 +10,7 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
+import DescriptionIcon from "@mui/icons-material/Description";
 
 import Wave from "@/components/Wave/Wave";
 
@@ -22,11 +23,16 @@ export default function ContactPage() {
     githubURL: "https://github.com/dereoprojects",
     upworkURL:
       "https://www.upwork.com/freelancers/~010d991cff4a3a9f37?mp_source=share",
+    cvPath: "/resume/cv.pdf",
   };
 
   return (
     <Container
       maxWidth={false}
+      component={motion.div}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 2 }}
       disableGutters
       sx={{
         display: "flex",
@@ -38,9 +44,6 @@ export default function ContactPage() {
       {/* Main content */}
       <Box
         component={motion.div}
-        initial={{ y: 40, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1.5 }}
         sx={{
           flex: 1,
           display: "flex",
@@ -78,7 +81,7 @@ export default function ContactPage() {
             Phone
           </MuiLink>
         </Box>
-        <Box sx={{display: "flex", flexDirection: "row", gap: 3}}>
+        <Box sx={{ display: "flex", flexDirection: "row", gap: 3 }}>
           {/* Business Email */}
           <Box
             display="flex"
@@ -183,9 +186,29 @@ export default function ContactPage() {
             Upwork
           </MuiLink>
         </Box>
+        {/* CV */}
+        <Box
+          display="flex"
+          alignItems="center"
+          gap={1}
+          component={motion.div}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <DescriptionIcon color="primary" />
+          <MuiLink
+            href={contactData.cvPath}
+            underline="hover"
+            color="inherit"
+            target="_blank" // Ensures it opens in a new tab
+            rel="noopener noreferrer"
+          >
+            View Resumé
+          </MuiLink>
+        </Box>
       </Box>
 
-      <Box sx={{ width: "100%" , overflow: "hidden"}}>
+      <Box sx={{ width: "100%", overflow: "hidden" }}>
         <Wave />
       </Box>
     </Container>

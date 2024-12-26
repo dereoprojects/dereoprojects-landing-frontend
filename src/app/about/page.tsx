@@ -2,13 +2,19 @@
 import styles from "./styles.module.css";
 
 import React from "react";
-import { Container, Typography, Box } from "@mui/material";
+import { Container, Typography, Box, SvgIcon } from "@mui/material";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
 import PublicIcon from "@mui/icons-material/Public";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Wave from "@/components/Wave/Wave";
 import AboutSection from "./aboutSection";
+import AboutHobbiesIcon from "../../../public/assets/about/about_hobbies.svg";
+import AboutMeIcon from "../../../public/assets/about/about_me.svg";
+import AboutPurposeIcon from "../../../public/assets/about/about_purpose.svg";
+import AboutIdealsIcon from "../../../public/assets/about/about_ideals.svg";
+
+
 
 export default function AboutPage() {
   return (
@@ -33,7 +39,7 @@ export default function AboutPage() {
           <EmojiPeopleIcon fontSize="large" sx={{ color: "primary.main" }} />
         }
         text="Hi, I’m Oguzhan Dere, a software developer passionate about creating user-friendly applications and exploring the endless possibilities of technology."
-        animation={<motion.div className={styles["circle-animation"]} />}
+        animation={AboutMeIcon}
       />
       <Wave color="primary.main" backgroundColor="secondary.main"></Wave>
       {/* Section 2: What This Page Is For */}
@@ -42,7 +48,7 @@ export default function AboutPage() {
         title="What This Page is For"
         icon={<PublicIcon fontSize="large" sx={{ color: "secondary.main" }} />}
         text="This page serves as my digital portfolio and a place where I share my thoughts, hobbies, and aspirations. It's a glimpse into my journey and what inspires me."
-        animation={<motion.div className={styles["circle-animation"]} />}
+        animation={AboutPurposeIcon}
       />
 
       <Wave
@@ -55,7 +61,7 @@ export default function AboutPage() {
       <AboutSection
         title="My Ideals and What I Aim in Life"
         text="I believe in continuous learning, creating a positive impact through technology, and fostering meaningful connections. My goal is to contribute to innovative solutions that make life better."
-        animation={<motion.div className={styles["circle-animation"]} />}
+        animation={AboutIdealsIcon}
       />
       <Wave
         selectedWave={2}
@@ -71,7 +77,7 @@ export default function AboutPage() {
           <FavoriteIcon fontSize="large" sx={{ color: "secondary.main" }} />
         }
         text="In my free time, I enjoy creating music, dancing to my favorite tunes, and exploring new creative outlets. These activities fuel my imagination and keep me energized."
-        animation={<motion.div className={styles["circle-animation"]} />}
+        animation={AboutHobbiesIcon}
       />
     </Container>
   );

@@ -8,8 +8,11 @@ import ButtonBrushStrokeWrapper from "@/components/BrushStrokeWrappers/ButtonBru
 import MainBrushStrokeWrapper from "@/components/BrushStrokeWrappers/MainBrushStrokeWrapper";
 import { Box, Container, Typography } from "@mui/material";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 export default function Home() {
+    const [triggerButtonsRender, setTriggerButtonsRender] = useState(false);
+  
   return (
     <Container
       component={motion.div}
@@ -45,8 +48,8 @@ export default function Home() {
             padding: 1,
           }}
         >
-          <BrushStrokeButton text="Projects"></BrushStrokeButton>
-          <BrushStrokeButton text="About"></BrushStrokeButton>
+          <BrushStrokeButton text="Projects" triggerPlay={triggerButtonsRender}></BrushStrokeButton>
+          <BrushStrokeButton text="About" triggerPlay={triggerButtonsRender} playDelay={500}></BrushStrokeButton>
         </Box>
         <Box sx={{ flex: { xs: 2, md: 5 }, height: "100%" }}>
           <MainBrushStrokeWrapper>
@@ -104,16 +107,22 @@ export default function Home() {
                     gap: 0.5,
                     userSelect: "none",
                     fontSize: {
-                      xs: "clamp(1rem, 12vw, 4rem)",
-                      sm: "clamp(1rem, 10vw, 4rem)",
+                      xs: "clamp(0.8rem, 10vw, 3rem)",
+                      sm: "clamp(1rem, 6vw, 2.5rem)",
+                      md: "clamp(1rem, 10vw, 5rem)",
                     },
                   }}
                 >
-                  {"Projects".split("").map((char, index) => (
+                  {"Projects".split("").map((char, index, arr) => (
                     <motion.span
                       key={index}
                       initial={{ y: 50, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
+                      onAnimationComplete={() => {
+                        if (index === arr.length - 1) {
+                          setTriggerButtonsRender(true);
+                        }
+                      }}
                       transition={{
                         duration: 0.5,
                         delay: 4.5 + index * 0.1, // Delay each letter
@@ -136,8 +145,8 @@ export default function Home() {
             padding: 1,
           }}
         >
-          <BrushStrokeButton text="Contact" reversed></BrushStrokeButton>
-          <BrushStrokeButton text="Download CV" reversed></BrushStrokeButton>
+          <BrushStrokeButton text="Contact" triggerPlay={triggerButtonsRender}  reversed></BrushStrokeButton>
+          <BrushStrokeButton text="CV" triggerPlay={triggerButtonsRender} playDelay={500} reversed></BrushStrokeButton>
         </Box>
       </Box>
 
@@ -147,6 +156,7 @@ export default function Home() {
           width: "100%",
           flexGrow: 1,
           flexDirection: "column",
+          padding: 3
         }}
       >
         <Box
@@ -154,22 +164,24 @@ export default function Home() {
             display: "flex",
             height: "50%",
             flexDirection: "row",
-            padding: 3,
+            px: 3,
+            pt: 3
           }}
         >
-          <BrushStrokeButton text="Projects"></BrushStrokeButton>
-          <BrushStrokeButton text="About" reversed></BrushStrokeButton>
+          <BrushStrokeButton text="Projects" triggerPlay={triggerButtonsRender} ></BrushStrokeButton>
+          <BrushStrokeButton text="About" triggerPlay={triggerButtonsRender} playDelay={500} reversed></BrushStrokeButton>
         </Box>
         <Box
           sx={{
             display: "flex",
             height: "50%",
             flexDirection: "row",
-            padding: 3,
+            px: 3,
+            pb: 3
           }}
         >
-          <BrushStrokeButton text="Contact"></BrushStrokeButton>
-          <BrushStrokeButton text="Download CV" reversed></BrushStrokeButton>
+          <BrushStrokeButton text="Contact" triggerPlay={triggerButtonsRender}></BrushStrokeButton>
+          <BrushStrokeButton text="CV" triggerPlay={triggerButtonsRender} playDelay={500} reversed></BrushStrokeButton>
         </Box>
       </Box>
     </Container>

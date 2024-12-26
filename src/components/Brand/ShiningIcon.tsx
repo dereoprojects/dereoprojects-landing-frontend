@@ -7,11 +7,10 @@ export const ShiningIcon = () => (
   <motion.div
     initial={{ opacity: 1, filter: "brightness(100%)" }}
     animate={{
-      opacity: [1, 0.8, 1], 
       filter: ["brightness(100%)", "brightness(150%)", "brightness(100%)"], 
     }}
     transition={{
-      duration: 3,
+      duration: 2,
       repeat: Infinity, 
       repeatDelay: 10,
       delay: 5,

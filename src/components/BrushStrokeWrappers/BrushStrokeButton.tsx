@@ -11,11 +11,15 @@ interface BrushStrokeButtonProps {
   text?: string;
   reversed?: boolean;
   onClick?: () => void; // Add onClick as an optional prop
+  triggerPlay?: boolean;
+  playDelay?: number;
 }
 
 const BrushStrokeButton: React.FC<BrushStrokeButtonProps> = ({
   text = "",
   reversed = false,
+  triggerPlay = false,
+  playDelay = 0, // Default no delay
   onClick,
 }) => {
   const [hovered, setHovered] = useState(false);
@@ -33,7 +37,7 @@ const BrushStrokeButton: React.FC<BrushStrokeButtonProps> = ({
       }}
       transition={{ duration: 0.2 }}
     >
-      <ButtonBrushStrokeWrapper reversed={reversed}>
+      <ButtonBrushStrokeWrapper triggerPlay={triggerPlay} playDelay={playDelay} reversed={reversed}>
         <Container
           disableGutters
           component={motion.div}
@@ -82,9 +86,9 @@ const BrushStrokeButton: React.FC<BrushStrokeButtonProps> = ({
               sx={{
                 userSelect: "none",
                 fontSize: {
-                  xs: "clamp(0.5rem, 5vw, 2rem)",
-                  sm: "clamp(0.5rem, 2.5vw, 1.5rem)",
-                  md: "clamp(0.8rem, 1.5vw, 2rem)",
+                  xs: "clamp(0.8rem, 5vw, 2rem)",
+                  sm: "clamp(0.8rem, 3vw, 2rem)",
+                  md: "clamp(0.8rem, 2.3vw, 2rem)",
                 },
               }}
             >

@@ -5,6 +5,7 @@ import { Drawer, Box, Button, Container, Toolbar } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
 import Link from "next/link";
+import AppbarNavigation from "@/components/ResponsiveAppBar/AppbarNavigation";
 
 interface MainWithDrawerProps {
   children: React.ReactNode;
@@ -18,7 +19,14 @@ const MainWithDrawer: React.FC<MainWithDrawerProps> = ({
   drawerChange,
 }) => {
   return (
-    <Container component="main" disableGutters sx={{height: {xs: "calc( 100vh - 56px )", sm: "calc( 100vh - 64px )" }}} maxWidth={false} >
+    <Container
+      component="main"
+      disableGutters
+      sx={{
+        height: { xs: "calc( 100vh - 56px )", sm: "calc( 100vh - 64px )" },
+      }}
+      maxWidth={false}
+    >
       {children}
       <Drawer
         sx={{
@@ -34,25 +42,30 @@ const MainWithDrawer: React.FC<MainWithDrawerProps> = ({
         onClose={() => drawerChange(false)}
       >
         <Toolbar sx={{ width: 0 }}></Toolbar>
-        <Box sx={{ width: 200, padding: 2 }}>
-          <Button
-            component={Link}
-            color="secondary"
-            href="/about"
-            onClick={() => drawerChange(false)}
-            fullWidth
-          >
-            About
-          </Button>
-          <Button
-            component={Link}
-            color="secondary"
-            href="/contact"
-            onClick={() => drawerChange(false)}
-            fullWidth
-          >
-            Contact
-          </Button>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            padding: 2,
+            gap: 2,
+            width: "50vw !important",
+          }}
+        >
+          <Box onClick={() => drawerChange(false)}>
+            <AppbarNavigation
+              text="Projects"
+              value="/projects"
+            ></AppbarNavigation>
+          </Box>
+          <Box onClick={() => drawerChange(false)}>
+            <AppbarNavigation text="About" value="/about"></AppbarNavigation>
+          </Box>
+          <Box onClick={() => drawerChange(false)}>
+            <AppbarNavigation
+              text="Contact"
+              value="/contact"
+            ></AppbarNavigation>
+          </Box>
         </Box>
       </Drawer>
     </Container>

@@ -17,11 +17,15 @@ import { calculateActualDimensions } from "@/utils/helpers";
 interface ButtonBrushStrokeWrapperProps {
   children: ReactNode;
   reversed?: boolean;
+  triggerPlay?: boolean;
+  playDelay?: number;
 }
 
 const ButtonBrushStrokeWrapper: React.FC<ButtonBrushStrokeWrapperProps> = ({
   children,
   reversed = false,
+  triggerPlay = false,
+  playDelay = 0, // Default no delay
 }) => {
   const { rive, RiveComponent } = useRive({
     src: "/assets/brushes/brush_2.riv",
@@ -31,14 +35,23 @@ const ButtonBrushStrokeWrapper: React.FC<ButtonBrushStrokeWrapperProps> = ({
     autoplay: false,
   });
 
-  const input = useStateMachineInput(rive, "State Machine 1", "isReversed", reversed);
+  const input = useStateMachineInput(
+    rive,
+    "State Machine 1",
+    "isReversed",
+    reversed
+  );
 
   React.useEffect(() => {
-    if (input) {
+    if (input && triggerPlay) {
+      const timeoutId = setTimeout(() => {
         input.value = reversed;
         rive?.play();
+      }, playDelay);
+
+      return () => clearTimeout(timeoutId); // Cleanup timeout
     }
-  }, [input]);
+  }, [input, triggerPlay, playDelay]);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const [artworkSize, setArtworkSize] = useState({ width: 0, height: 0 });
