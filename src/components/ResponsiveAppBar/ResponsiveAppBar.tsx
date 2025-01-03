@@ -1,15 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  Drawer,
-  Box,
-  Button,
-  Typography,
-} from "@mui/material";
+import { AppBar, Toolbar, IconButton, Box } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import Brand from "@/components/Brand/Brand";
@@ -17,7 +9,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import AppbarNavigation from "./AppbarNavigation";
 interface ResponsiveAppBarProps {
-  drawerChange: (open: boolean) => void; // Define drawerChange as a function type
+  drawerChange: (open: boolean) => void;
   isDrawerOpen: boolean;
 }
 const ResponsiveAppBar: React.FC<ResponsiveAppBarProps> = ({
@@ -50,8 +42,8 @@ const ResponsiveAppBar: React.FC<ResponsiveAppBarProps> = ({
     <motion.div
       initial={{ y: 0, opacity: 1 }}
       animate={{
-        y: scrollDirection === "up" ? 0 : -100, // Slide down or up
-        opacity: scrollDirection === "up" ? 1 : 0, // Fade in or out
+        y: scrollDirection === "up" ? 0 : -100,
+        opacity: scrollDirection === "up" ? 1 : 0,
       }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
       style={{ position: "sticky", top: 0, zIndex: 1400, width: "100%" }}

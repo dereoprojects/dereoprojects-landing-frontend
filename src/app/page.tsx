@@ -1,18 +1,30 @@
 "use client";
 
-import Brand from "@/components/Brand/Brand";
 import BrandIcon from "@/components/Brand/BrandIcon";
 import BrandText from "@/components/Brand/BrandText";
 import BrushStrokeButton from "@/components/BrushStrokeWrappers/BrushStrokeButton";
-import ButtonBrushStrokeWrapper from "@/components/BrushStrokeWrappers/ButtonBrushStrokeWrapper";
 import MainBrushStrokeWrapper from "@/components/BrushStrokeWrappers/MainBrushStrokeWrapper";
 import { Box, Container, Typography } from "@mui/material";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { ContactData } from "./constants/contact";
+
 
 export default function Home() {
-    const [triggerButtonsRender, setTriggerButtonsRender] = useState(false);
-  
+  const router = useRouter();
+
+  const [triggerButtonsRender, setTriggerButtonsRender] = useState(false);
+
+  const navigate = (navigateTo: string) => {
+    router.push(navigateTo);
+  };
+
+  const openCV = () => {
+    ; // Adjust the path to match your CV file location
+    window.open(ContactData.cvPath, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <Container
       component={motion.div}
@@ -48,8 +60,17 @@ export default function Home() {
             padding: 1,
           }}
         >
-          <BrushStrokeButton text="Projects" triggerPlay={triggerButtonsRender}></BrushStrokeButton>
-          <BrushStrokeButton text="About" triggerPlay={triggerButtonsRender} playDelay={500}></BrushStrokeButton>
+          <BrushStrokeButton
+            text="Projects"
+            onClick={() => navigate("/projects")}
+            triggerPlay={triggerButtonsRender}
+          ></BrushStrokeButton>
+          <BrushStrokeButton
+            text="About"
+            onClick={() => navigate("/about")}
+            triggerPlay={triggerButtonsRender}
+            playDelay={500}
+          ></BrushStrokeButton>
         </Box>
         <Box sx={{ flex: { xs: 2, md: 5 }, height: "100%" }}>
           <MainBrushStrokeWrapper>
@@ -145,8 +166,19 @@ export default function Home() {
             padding: 1,
           }}
         >
-          <BrushStrokeButton text="Contact" triggerPlay={triggerButtonsRender}  reversed></BrushStrokeButton>
-          <BrushStrokeButton text="CV" triggerPlay={triggerButtonsRender} playDelay={500} reversed></BrushStrokeButton>
+          <BrushStrokeButton
+            text="Contact"
+            onClick={() => navigate("/contact")}
+            triggerPlay={triggerButtonsRender}
+            reversed
+          ></BrushStrokeButton>
+          <BrushStrokeButton
+            text="CV"
+            onClick={() => openCV()}
+            triggerPlay={triggerButtonsRender}
+            playDelay={500}
+            reversed
+          ></BrushStrokeButton>
         </Box>
       </Box>
 
@@ -156,7 +188,7 @@ export default function Home() {
           width: "100%",
           flexGrow: 1,
           flexDirection: "column",
-          padding: 3
+          padding: 3,
         }}
       >
         <Box
@@ -165,11 +197,21 @@ export default function Home() {
             height: "50%",
             flexDirection: "row",
             px: 3,
-            pt: 3
+            pt: 3,
           }}
         >
-          <BrushStrokeButton text="Projects" triggerPlay={triggerButtonsRender} ></BrushStrokeButton>
-          <BrushStrokeButton text="About" triggerPlay={triggerButtonsRender} playDelay={500} reversed></BrushStrokeButton>
+          <BrushStrokeButton
+            text="Projects"
+            onClick={() => navigate("/projects")}
+            triggerPlay={triggerButtonsRender}
+          ></BrushStrokeButton>
+          <BrushStrokeButton
+            text="About"
+            onClick={() => navigate("/about")}
+            triggerPlay={triggerButtonsRender}
+            playDelay={500}
+            reversed
+          ></BrushStrokeButton>
         </Box>
         <Box
           sx={{
@@ -177,11 +219,21 @@ export default function Home() {
             height: "50%",
             flexDirection: "row",
             px: 3,
-            pb: 3
+            pb: 3,
           }}
         >
-          <BrushStrokeButton text="Contact" triggerPlay={triggerButtonsRender}></BrushStrokeButton>
-          <BrushStrokeButton text="CV" triggerPlay={triggerButtonsRender} playDelay={500} reversed></BrushStrokeButton>
+          <BrushStrokeButton
+            text="Contact"
+            onClick={() => navigate("/contact")}
+            triggerPlay={triggerButtonsRender}
+          ></BrushStrokeButton>
+          <BrushStrokeButton
+            text="CV"
+            onClick={() => openCV()}
+            triggerPlay={triggerButtonsRender}
+            playDelay={500}
+            reversed
+          ></BrushStrokeButton>
         </Box>
       </Box>
     </Container>

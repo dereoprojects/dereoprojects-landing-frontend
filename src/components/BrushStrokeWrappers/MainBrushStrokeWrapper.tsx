@@ -1,12 +1,5 @@
-import { motion } from "framer-motion";
-import React, {
-  ReactNode,
-  ElementType,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import Rive, { useRive, Layout, Fit, Alignment } from "@rive-app/react-canvas";
+import React, { ReactNode, useEffect, useRef, useState } from "react";
+import { useRive, Layout, Fit, Alignment } from "@rive-app/react-canvas";
 import { calculateActualDimensions } from "@/utils/helpers";
 
 interface MainBrushStrokeWrapperProps {
@@ -24,7 +17,6 @@ const MainBrushStrokeWrapper: React.FC<MainBrushStrokeWrapperProps> = ({
 
   const containerRef = useRef<HTMLDivElement>(null);
   const [artworkSize, setArtworkSize] = useState({ width: 0, height: 0 });
-
 
   useEffect(() => {
     const container = containerRef.current;

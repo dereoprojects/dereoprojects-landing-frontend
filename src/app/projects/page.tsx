@@ -1,23 +1,13 @@
 "use client";
-import styles from "./styles.module.css";
 
 import React from "react";
-import { Container, Typography, Box } from "@mui/material";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
-import PublicIcon from "@mui/icons-material/Public";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import { Container } from "@mui/material";
+import { motion } from "framer-motion";
 import Wave from "@/components/Wave/Wave";
 import ProjectSection from "./projectSection";
+import { ProjectSections } from "../constants/sections";
 
 export default function ProjectsPage() {
-  const keddyTextArray = [
-    "An advanced music personalization application based on recommendations and filtering",
-    "Get personalized tracks and playlists by simply sharing how you feel",
-    "Curate and filter your favorite music using customizable presets",
-    "Host music sessions with friends using selected “Vibes”",
-  ];
-
   return (
     <Container
       component={motion.div}
@@ -31,17 +21,26 @@ export default function ProjectsPage() {
         flexDirection: "column",
         position: "relative",
         width: "100%",
-        height: "100%",
       }}
     >
-      <Box sx={{ flex: 1, display: "flex", justifyContent: "center" }}>
-        <ProjectSection
-          title="Keddy"
-          url="https://dev.keddy.dereoprojects.com"
-          textArray={keddyTextArray}
-          animation={<motion.div className={styles["circle-animation"]} />}
-        />
-      </Box>
+      {ProjectSections.map((section, index) => (
+        <React.Fragment key={index}>
+          <ProjectSection
+            title={section.title}
+            icon={section.icon}
+            text={section.text}
+            component={section.component}
+            reversed={section.reversed}
+          />
+          {section.wave && (
+            <Wave
+              color={section.wave.color}
+              backgroundColor={section.wave.backgroundColor}
+              selectedWave={section.wave.selectedWave}
+            />
+          )}
+        </React.Fragment>
+      ))}
     </Container>
   );
 }

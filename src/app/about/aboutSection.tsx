@@ -1,22 +1,21 @@
 import { Box, SvgIcon, Typography } from "@mui/material";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import React from "react";
 
 const AboutSection = ({
   title,
   text,
   icon,
-  animation,
+  img,
   reversed = false,
 }: {
   title: string;
   text: string;
   icon?: React.ReactNode;
-  animation: any;
+  img: any;
   reversed?: boolean;
 }) => {
   const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: false });
   const { scrollYProgress: enterScrollProgress } = useScroll({
     target: ref,
     offset: ["start end", "end end"],
@@ -62,7 +61,7 @@ const AboutSection = ({
         minHeight: "70vh",
         width: "100%", //When i make this 500 px for example, issue is gone
         position: "relative",
-        overflow: "hidden", // Prevent content overflow
+        overflow: "visible", // Prevent content overflow
         backgroundColor: reversed ? "primary.main" : "secondary.main",
       }}
     >
@@ -70,25 +69,40 @@ const AboutSection = ({
       <Box
         sx={{
           display: "flex",
+          flex: {xs: 6, sm: 5},
           flexDirection: "column",
-          px: 3,
-          height: { xs: "60%", sm: "100%" },
+          justifyContent: "center",
+          px: {xs: 3, sm: 5},
         }}
       >
-        <motion.div
+        <Box
+          component={motion.div}
           style={{
             scale: scaleLeave,
             opacity: opacityLeave,
             x: xLeave,
             y: yLeave,
           }}
+          sx={{
+            height: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: { xs: "center", sm: "normal" },
+          }}
         >
-          <motion.div
+          <Box
+            component={motion.div}
             style={{
               scale: scaleEnter,
               opacity: opacityEnter,
               x: xEnter,
               y: yEnter,
+            }}
+            sx={{
+              height: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: { xs: "center", sm: "normal" },
             }}
           >
             <Box
@@ -114,13 +128,16 @@ const AboutSection = ({
                 </Typography>
               </Box>
             </Box>
-          </motion.div>
-        </motion.div>
+          </Box>
+        </Box>
         <motion.div style={{ opacity: textOpacityLeave, x: xLeave }}>
           <motion.div style={{ opacity: textOpacityEnter, x: xEnter }}>
             <Box sx={{ justifyContent: { xs: "center", sm: "normal" } }}>
               <Typography
-                sx={{ color: reversed ? "text.secondary" : "text.primary", textAlign: {xs: "center", sm: "start"} }}
+                sx={{
+                  color: reversed ? "text.secondary" : "text.primary",
+                  textAlign: { xs: "center", sm: "start" },
+                }}
               >
                 {text}
               </Typography>
@@ -133,39 +150,45 @@ const AboutSection = ({
         sx={{
           display: "flex",
           justifyContent: "center",
-          px: 3,
-          height: { xs: "40%", sm: "100%" },
-          width: { xs: "100%", sm: "50%" },
+          flex: {xs: 4, sm: 5},
+          overflow: "hidden",
         }}
       >
-        <motion.div
+        <Box
+          component={motion.div}
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             x: animationXEnter,
             opacity: opacityEnter,
-            height: "100%",
+          }}
+          sx={{
+            height: { xs: "75%", sm: "50%" },
+            width: { xs: "75%", sm: "50%" },
           }}
         >
-          <motion.div
+          <Box
+            component={motion.div}
             style={{
               x: animationXLeave,
               opacity: opacityLeave,
-              height: "100%",
+              
             }}
           >
             <SvgIcon
-              component={animation}
+              component={img}
               inheritViewBox
               sx={{
                 color: reversed ? "secondary.main" : "primary.main",
                 height: "100%",
                 width: "100%",
+                maxHeight: "100%", // Constrain height
+                maxWidth: "100%", // Constrain width
               }}
             />
-          </motion.div>
-        </motion.div>
+          </Box>
+        </Box>
       </Box>
     </Box>
   );

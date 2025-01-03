@@ -1,6 +1,6 @@
 import * as React from "react";
-import { ThemeProvider, CssBaseline, Toolbar } from "@mui/material";
-import theme from "../theme"; // Your custom Material-UI theme
+import { ThemeProvider, CssBaseline } from "@mui/material";
+import theme from "../theme";
 import type { Metadata } from "next";
 import "./globals.css";
 import ClientRoot from "./ClientRoot";
@@ -20,7 +20,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <ClientRoot >{children}</ClientRoot>
+          <ClientRoot>{children}</ClientRoot>
         </ThemeProvider>
       </body>
     </html>

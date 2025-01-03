@@ -1,22 +1,21 @@
-import VisitWebsite from "@/components/VisitWebsite";
 import { Box, Typography } from "@mui/material";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import React from "react";
 
 const ProjectSection = ({
   title,
-  textArray,
+  text,
+  icon,
+  component,
   reversed = false,
-  url = "",
 }: {
   title: string;
-  textArray: string[];
-  animation: React.ReactNode;
+  text: string;
+  icon?: React.ReactNode;
+  component?: React.ReactNode;
   reversed?: boolean;
-  url?: string;
 }) => {
   const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: false });
   const { scrollYProgress: enterScrollProgress } = useScroll({
     target: ref,
     offset: ["start end", "end end"],
@@ -55,90 +54,131 @@ const ProjectSection = ({
       ref={ref}
       sx={{
         display: "flex",
+        flexDirection: { xs: "column", sm: "row" },
+        justifyContent: "center",
+        gap: 3,
         alignItems: "center",
+        minHeight: "70vh",
         width: "100%", //When i make this 500 px for example, issue is gone
         position: "relative",
-        overflow: "hidden", // Prevent content overflow
+        overflow: "visible", // Prevent content overflow
         backgroundColor: reversed ? "primary.main" : "secondary.main",
       }}
     >
       {/* Left Side: Content */}
-      <Box sx={{ flex: 1, pl: 4}}>
-        <motion.div
+      <Box
+        sx={{
+          display: "flex",
+          flex: { xs: 6, sm: 5 },
+          flexDirection: "column",
+          justifyContent: "center",
+          px: { xs: 3, sm: 5 },
+        }}
+      >
+        <Box
+          component={motion.div}
           style={{
             scale: scaleLeave,
             opacity: opacityLeave,
             x: xLeave,
             y: yLeave,
           }}
+          sx={{
+            height: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: { xs: "center", sm: "normal" },
+          }}
         >
-          <motion.div
+          <Box
+            component={motion.div}
             style={{
               scale: scaleEnter,
               opacity: opacityEnter,
               x: xEnter,
               y: yEnter,
             }}
+            sx={{
+              height: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: { xs: "center", sm: "normal" },
+            }}
           >
-            <Box display="flex" justifyContent="center"  mb={2}>
-              <Typography
-                component="div"
-                variant="h3"
-                sx={{ color: reversed ? "secondary.main" : "primary.main" }}
+            <Box
+              display="flex"
+              alignItems="center"
+              sx={{ justifyContent: { xs: "center", sm: "normal" } }}
+              gap={2}
+              mb={2}
+            >
+              <Box
+                display={"flex"}
+                flexDirection={"row"}
+                gap={1}
+                alignItems={"center"}
               >
-                {title}
-              </Typography>
+                {icon}
+                <Typography
+                  component="div"
+                  variant="h3"
+                  sx={{ color: reversed ? "secondary.main" : "primary.main" }}
+                >
+                  {title}
+                </Typography>
+              </Box>
             </Box>
-          </motion.div>
-        </motion.div>
+          </Box>
+        </Box>
         <motion.div style={{ opacity: textOpacityLeave, x: xLeave }}>
           <motion.div style={{ opacity: textOpacityEnter, x: xEnter }}>
-            <Box
-              component="ul"
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                pl: 0,
-                gap: 3, // Space between columns
-              }}
-            >
-              {textArray.map((line, index) => (
-                <Typography
-                  component="li"
-                  key={index}
-                  sx={{
-                    color: reversed ? "text.secondary" : "text.primary",
-                  }}
-                >
-                  {line}
-                </Typography>
-              ))}
+            <Box sx={{ justifyContent: { xs: "center", sm: "normal" } }}>
+              <Typography
+                sx={{
+                  color: reversed ? "text.secondary" : "text.primary",
+                  textAlign: { xs: "center", sm: "start" },
+                }}
+              >
+                {text}
+              </Typography>
             </Box>
           </motion.div>
         </motion.div>
       </Box>
 
-      {/* Right Side: Animation */}
-      <motion.div
-        style={{
-          flex: 0.4,
-          height: "100%",
+      <Box
+        sx={{
           display: "flex",
           justifyContent: "center",
-          alignItems: "center",
-          x: animationXEnter,
-          opacity: opacityEnter,
+          flex: { xs: 4, sm: 5 },
+          overflow: "hidden",
         }}
       >
-        <motion.div
+        <Box
+          component={motion.div}
           style={{
-            x: animationXLeave,
-            opacity: opacityLeave,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            x: animationXEnter,
+            opacity: opacityEnter,
+          }}
+          sx={{
+            height: { xs: "75%", sm: "50%" },
+            width: { xs: "75%", sm: "50%" },
           }}
         >
-          <VisitWebsite url={url} label="Visit Website" />
-        </motion.div>
-      </motion.div>
+          <Box
+            component={motion.div}
+            style={{
+              x: animationXLeave,
+              opacity: opacityLeave,
+            }}
+          >
+            {component}
+          </Box>
+        </Box>
+      </Box>
     </Box>
   );
 };

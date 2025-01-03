@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import { Typography, Box, Link as MuiLink } from "@mui/material";
-import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
-interface VisitWebsiteProps {
-  url: string;
+interface InnerNavigateButtonProps {
+  navigate: string;
   label: string;
+  icon?: React.ReactNode;
   reversed?: boolean;
 }
 
-const VisitWebsite: React.FC<VisitWebsiteProps> = ({
-  url,
+const InnerNavigateButton: React.FC<InnerNavigateButtonProps> = ({
+  navigate,
   label,
+  icon,
   reversed = false,
 }) => {
   const [hovered, setHovered] = useState(false);
@@ -46,15 +48,17 @@ const VisitWebsite: React.FC<VisitWebsiteProps> = ({
       }}
     >
       <MuiLink
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
+        component={Link}
+        href={navigate}
+        passHref
         underline="hover"
+        color={reversed ? "secondary" : "primary"}
       >
         <Typography variant="h5" color={reversed ? "secondary" : "primary"}>
           {label}
         </Typography>
       </MuiLink>
+
       <Box
         component={motion.div}
         animate={{
@@ -62,13 +66,10 @@ const VisitWebsite: React.FC<VisitWebsiteProps> = ({
         }}
         transition={{ duration: 0.2 }}
       >
-        <OpenInNewIcon
-          color={reversed ? "secondary" : "primary"}
-          fontSize="small"
-        />
+        {icon}
       </Box>
     </Box>
   );
 };
 
-export default VisitWebsite;
+export default InnerNavigateButton;

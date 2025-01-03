@@ -1,8 +1,7 @@
-"use client"; // Ensure this is treated as a Client Component
+"use client";
 
 import React, { useState } from "react";
 
-// Import SVGs as React components
 import { Box, Container, Typography } from "@mui/material";
 import ButtonBrushStrokeWrapper from "./ButtonBrushStrokeWrapper";
 import { motion } from "framer-motion";
@@ -10,7 +9,7 @@ import { motion } from "framer-motion";
 interface BrushStrokeButtonProps {
   text?: string;
   reversed?: boolean;
-  onClick?: () => void; // Add onClick as an optional prop
+  onClick?: () => void;
   triggerPlay?: boolean;
   playDelay?: number;
 }
@@ -37,7 +36,11 @@ const BrushStrokeButton: React.FC<BrushStrokeButtonProps> = ({
       }}
       transition={{ duration: 0.2 }}
     >
-      <ButtonBrushStrokeWrapper triggerPlay={triggerPlay} playDelay={playDelay} reversed={reversed}>
+      <ButtonBrushStrokeWrapper
+        triggerPlay={triggerPlay}
+        playDelay={playDelay}
+        reversed={reversed}
+      >
         <Container
           disableGutters
           component={motion.div}

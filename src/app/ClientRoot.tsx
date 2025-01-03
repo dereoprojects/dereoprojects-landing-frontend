@@ -18,9 +18,12 @@ export default function ClientRoot({
 
   return (
     <>
-      <ResponsiveAppBar isDrawerOpen={isDrawerOpen} drawerChange={handleDrawerChange} />
+      <ResponsiveAppBar
+        isDrawerOpen={isDrawerOpen}
+        drawerChange={handleDrawerChange}
+      />
       {/* Spacer to account for AppBar's height */}
-      <Toolbar sx={{width: "100%"}} />
+      <Toolbar sx={{ width: "100%" }} />
       <MainWithDrawer
         children={children}
         drawerOpen={isDrawerOpen}

@@ -28,7 +28,7 @@ const Wave: React.FC<{
     >
       {/* this marginBottom is why i sometimes hate frontend */}
       <SvgIcon
-        component={WaveComponent} // Pass the dynamically selected SVG component
+        component={WaveComponent}
         inheritViewBox
         fontSize="large"
         sx={{

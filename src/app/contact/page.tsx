@@ -1,10 +1,8 @@
 "use client";
-import styles from "./styles.module.css";
 
 import React from "react";
 import { Container, Typography, Box, Link as MuiLink } from "@mui/material";
 import { motion } from "framer-motion";
-// Example icons you might use:
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import PhoneIcon from "@mui/icons-material/Phone";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -13,19 +11,9 @@ import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 import DescriptionIcon from "@mui/icons-material/Description";
 
 import Wave from "@/components/Wave/Wave";
+import { ContactData } from "../constants/contact";
 
 export default function ContactPage() {
-  const contactData = {
-    businessMail: "oguzhanderebusiness@gmail.com",
-    projectMail: "dereoprojects@gmail.com",
-    phoneNumber: "+90 531 010 3235",
-    linkedInURL: "https://www.linkedin.com/in/osandere/",
-    githubURL: "https://github.com/dereoprojects",
-    upworkURL:
-      "https://www.upwork.com/freelancers/~010d991cff4a3a9f37?mp_source=share",
-    cvPath: "/resume/cv.pdf",
-  };
-
   return (
     <Container
       maxWidth={false}
@@ -72,7 +60,7 @@ export default function ContactPage() {
         >
           <PhoneIcon color="primary" />
           <MuiLink
-            href={`tel:${contactData.phoneNumber}`}
+            href={`tel:${ContactData.phoneNumber}`}
             underline="hover"
             color="inherit"
             target="_blank"
@@ -81,47 +69,25 @@ export default function ContactPage() {
             Phone
           </MuiLink>
         </Box>
-        <Box sx={{ display: "flex", flexDirection: "row", gap: 3 }}>
-          {/* Business Email */}
-          <Box
-            display="flex"
-            alignItems="center"
-            gap={1}
-            component={motion.div}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+        {/* Business Email */}
+        <Box
+          display="flex"
+          alignItems="center"
+          gap={1}
+          component={motion.div}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <MailOutlineIcon color="primary" />
+          <MuiLink
+            href={`mailto:${ContactData.businessMail}`}
+            underline="hover"
+            color="inherit"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <MailOutlineIcon color="primary" />
-            <MuiLink
-              href={`mailto:${contactData.businessMail}`}
-              underline="hover"
-              color="inherit"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Business
-            </MuiLink>
-          </Box>
-          {/* Projects Email */}
-          <Box
-            display="flex"
-            alignItems="center"
-            gap={1}
-            component={motion.div}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <MailOutlineIcon color="primary" />
-            <MuiLink
-              href={`mailto:${contactData.projectMail}`}
-              underline="hover"
-              color="inherit"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Projects
-            </MuiLink>
-          </Box>
+            Business
+          </MuiLink>
         </Box>
 
         {/* LinkedIn */}
@@ -135,7 +101,7 @@ export default function ContactPage() {
         >
           <LinkedInIcon color="primary" />
           <MuiLink
-            href={contactData.linkedInURL}
+            href={ContactData.linkedInURL}
             underline="hover"
             color="inherit"
             target="_blank"
@@ -156,7 +122,7 @@ export default function ContactPage() {
         >
           <GitHubIcon color="primary" />
           <MuiLink
-            href={contactData.githubURL}
+            href={ContactData.githubURL}
             underline="hover"
             color="inherit"
             target="_blank"
@@ -177,7 +143,7 @@ export default function ContactPage() {
         >
           <WorkOutlineIcon color="primary" />
           <MuiLink
-            href={contactData.upworkURL}
+            href={ContactData.upworkURL}
             underline="hover"
             color="inherit"
             target="_blank"
@@ -197,10 +163,10 @@ export default function ContactPage() {
         >
           <DescriptionIcon color="primary" />
           <MuiLink
-            href={contactData.cvPath}
+            href={ContactData.cvPath}
             underline="hover"
             color="inherit"
-            target="_blank" // Ensures it opens in a new tab
+            target="_blank"
             rel="noopener noreferrer"
           >
             View Resumé

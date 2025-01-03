@@ -1,16 +1,13 @@
 "use client";
 
 import React from "react";
-import { Drawer, Box, Button, Container, Toolbar } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import IconButton from "@mui/material/IconButton";
-import Link from "next/link";
+import { Drawer, Box, Container, Toolbar } from "@mui/material";
 import AppbarNavigation from "@/components/ResponsiveAppBar/AppbarNavigation";
 
 interface MainWithDrawerProps {
   children: React.ReactNode;
   drawerOpen: boolean;
-  drawerChange: (open: boolean) => void; // Define drawerChange as a function type
+  drawerChange: (open: boolean) => void;
 }
 
 const MainWithDrawer: React.FC<MainWithDrawerProps> = ({

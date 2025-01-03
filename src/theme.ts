@@ -18,20 +18,20 @@ const poppins = Poppins({ subsets: ["latin"], weight: "400" });
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#5C3C35", // Custom primary color
+      main: "#5C3C35",
     },
     secondary: {
-      main: "#F8D8BA", // Custom secondary color
+      main: "#F8D8BA",
     },
     accent: {
-      main: "#FFD700", // Added gold as an accent color
+      main: "#FFD700",
     },
     background: {
-      default: "#F8D8BA", // Background color
-      paper: "#5C3C35", // Paper components color
+      default: "#F8D8BA",
+      paper: "#5C3C35",
     },
     text: {
-      primary: "#5C3C35", // Text color
+      primary: "#5C3C35",
       secondary: "#F8D8BA",
     },
   },

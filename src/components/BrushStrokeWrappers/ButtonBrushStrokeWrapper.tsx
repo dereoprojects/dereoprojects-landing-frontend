@@ -1,11 +1,5 @@
-import React, {
-  ReactNode,
-  ElementType,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import Rive, {
+import React, { ReactNode, useEffect, useRef, useState } from "react";
+import {
   useRive,
   Layout,
   Fit,
@@ -92,7 +86,7 @@ const ButtonBrushStrokeWrapper: React.FC<ButtonBrushStrokeWrapperProps> = ({
       style={{
         position: "relative",
         width: "100%",
-        height: "100%", // Adjust height based on content
+        height: "100%", 
         display: "flex",
         alignItems: "center",
         justifyContent: "center",

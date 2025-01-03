@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 interface AppbarNavigationProps {
-  text?: string; // Define drawerChange as a function type
+  text?: string;
   value?: string;
   backgroundColor?: string;
   defaultColor?: string;
@@ -31,10 +31,10 @@ const AppbarNavigation: React.FC<AppbarNavigationProps> = ({
           color: pathname === value ? selectedColor : defaultColor,
           height: "100%",
           backgroundColor,
-          flex: 1, // Ensure equal width
+          flex: 1,
           display: "flex",
-          justifyContent: "center", // Center-align text
-          alignItems: "center", // Center-align text vertically
+          justifyContent: "center",
+          alignItems: "center",
         }}
         href={value}
       >
