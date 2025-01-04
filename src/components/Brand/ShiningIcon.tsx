@@ -12,7 +12,7 @@ export const ShiningIcon = () => (
       duration: 2,
       repeat: Infinity,
       repeatDelay: 10,
-      delay: 5,
+      delay: 3,
       ease: "easeInOut",
     }}
     style={{ height: "100%", width: "auto" }}
