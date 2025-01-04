@@ -152,7 +152,6 @@ const ProjectSection = ({
           display: "flex",
           justifyContent: "center",
           flex: { xs: 4, sm: 5 },
-          overflow: "hidden",
         }}
       >
         <Box
@@ -164,10 +163,7 @@ const ProjectSection = ({
             x: animationXEnter,
             opacity: opacityEnter,
           }}
-          sx={{
-            height: { xs: "75%", sm: "50%" },
-            width: { xs: "75%", sm: "50%" },
-          }}
+          
         >
           <Box
             component={motion.div}
