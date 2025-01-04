@@ -28,13 +28,13 @@ const AboutSection = ({
 
   const xEnter = useTransform(enterScrollProgress, [0, 1], ["-75px", "0px"]); // Move horizontally
   const yEnter = useTransform(enterScrollProgress, [0, 1], ["-75px", "0px"]); // Move horizontally
-  const scaleEnter = useTransform(enterScrollProgress, [0, 1], [1.4, 1]);
+  const scaleEnter = useTransform(enterScrollProgress, [0, 1], [1.3, 1]);
   const opacityEnter = useTransform(enterScrollProgress, [0.2, 1], [0, 1]);
   const textOpacityEnter = useTransform(enterScrollProgress, [0.5, 1], [0, 1]);
 
   const xLeave = useTransform(exitScrollProgress, [0.2, 1], ["0px", "-75px"]); // Move horizontally
   const yLeave = useTransform(exitScrollProgress, [0.2, 1], ["0px", "-75px"]); // Move horizontally
-  const scaleLeave = useTransform(exitScrollProgress, [0.2, 1], [1, 1.4]);
+  const scaleLeave = useTransform(exitScrollProgress, [0.2, 1], [1, 1.3]);
   const opacityLeave = useTransform(exitScrollProgress, [0.2, 0.6], [1, 0]);
   const textOpacityLeave = useTransform(exitScrollProgress, [0.2, 0.7], [1, 0]);
 
@@ -56,9 +56,10 @@ const AboutSection = ({
         display: "flex",
         flexDirection: { xs: "column", sm: "row" },
         justifyContent: "center",
-        gap: 3,
+        gap: {xs: 3, sm: 2},
         alignItems: "center",
         minHeight: "70vh",
+        py: {xs: 3, md: 0.5},
         width: "100%", //When i make this 500 px for example, issue is gone
         position: "relative",
         overflow: "visible", // Prevent content overflow
@@ -122,7 +123,7 @@ const AboutSection = ({
                 <Typography
                   component="div"
                   variant="h3"
-                  sx={{ color: reversed ? "secondary.main" : "primary.main" }}
+                  sx={{ color: reversed ? "secondary.main" : "primary.main", fontSize: {xs: "7vw", sm: "2rem"} }}
                 >
                   {title}
                 </Typography>

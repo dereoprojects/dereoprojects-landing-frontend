@@ -14,7 +14,7 @@ export const AboutSections = [
   {
     title: "Who I Am",
     icon: <EmojiPeopleIcon fontSize="large" sx={{ color: "primary.main" }} />,
-    text: "Hi, I’m Oguzhan Dere, a software developer passionate about creating user-friendly applications and exploring the endless possibilities of technology.",
+    text: "Meet Oğuzhan Dere, a full-stack software developer who thrives on bringing imaginative ideas to life. Over the years, from streamlining enterprise applications to developing personalized digital experiences, I’ve built solutions that merge technical innovation with creativity. For me, coding is more of a way to craft and share the concepts I love envisioning, transforming abstract ideas into impactful and tangible results.",
     img: AboutMeIcon,
     reversed: false,
     wave: {
@@ -26,7 +26,7 @@ export const AboutSections = [
   {
     title: "Purpose of This Page",
     icon: <PublicIcon fontSize="large" sx={{ color: "secondary.main" }} />,
-    text: "This page serves as my digital portfolio and a place where I share my thoughts, hobbies, and aspirations. It's a glimpse into my journey and what inspires me.",
+    text: "This page is my digital portfolio, a space where I showcase my personal work and projects while offering a window into who I am. Beyond the technical, it’s a reflection of my ideas, passions, and the journey that has shaped me. By sharing my story and creations, I hope to connect with others and offer a deeper understanding of the person behind the work.",
     img: AboutPurposeIcon,
     reversed: true,
     wave: {
@@ -40,7 +40,7 @@ export const AboutSections = [
     icon: (
       <TipsAndUpdatesIcon fontSize="large" sx={{ color: "primary.main" }} />
     ),
-    text: "I believe in continuous learning, creating a positive impact through technology, and fostering meaningful connections. My goal is to contribute to innovative solutions that make life better.",
+    text: 'I believe in the interconnectedness of creativity, where all forms of art share underlying patterns of emotions and feelings. My vision is to explore this concept, which I call the "singularity of art", by bridging the gap between different artistic expressions and uncovering the threads that connect them. Additionally, I approach every project with a commitment to excellence. For me, it’s more about crafting maintainable and elegant solutions rather than merely finishing them. This dedication reflects my belief that true fulfillment lies in doing meaningful work to its fullest potential.',
     img: AboutIdealsIcon,
     reversed: false,
     wave: {
@@ -50,9 +50,9 @@ export const AboutSections = [
     },
   },
   {
-    title: "Hobbies",
+    title: "Life Beyond Work",
     icon: <FavoriteIcon fontSize="large" sx={{ color: "secondary.main" }} />,
-    text: "In my free time, I enjoy creating music, dancing to my favorite tunes, and exploring new creative outlets. These activities fuel my imagination and keep me energized.",
+    text: "I find joy in exploring new ways to appreciate life and discovering what truly resonates with me. As a drummer with an interest in music production, I’m deeply connected to the rhythm and flow of creativity, which also fuels my passion for dancing. Other than these, I cherish moments spent café-hopping with friends, engaging in meaningful conversations about life’s perspectives and shared experiences. These pursuits not only bring me happiness but also shape the way I view and engage with the world.",
     img: AboutHobbiesIcon,
     reversed: true,
     wave: null, // No wave after this section

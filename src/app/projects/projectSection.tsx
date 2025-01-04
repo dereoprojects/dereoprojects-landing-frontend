@@ -56,7 +56,8 @@ const ProjectSection = ({
         display: "flex",
         flexDirection: { xs: "column", sm: "row" },
         justifyContent: "center",
-        gap: 3,
+        gap: {xs: 1, sm: 3},
+        py: {xs: 3, md: 0.5},
         alignItems: "center",
         minHeight: "70vh",
         width: "100%", //When i make this 500 px for example, issue is gone
@@ -122,7 +123,7 @@ const ProjectSection = ({
                 <Typography
                   component="div"
                   variant="h3"
-                  sx={{ color: reversed ? "secondary.main" : "primary.main" }}
+                  sx={{ color: reversed ? "secondary.main" : "primary.main", fontSize: {xs: "7vw", sm: "2rem"}  }}
                 >
                   {title}
                 </Typography>

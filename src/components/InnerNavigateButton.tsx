@@ -54,7 +54,7 @@ const InnerNavigateButton: React.FC<InnerNavigateButtonProps> = ({
         underline="hover"
         color={reversed ? "secondary" : "primary"}
       >
-        <Typography variant="h5" color={reversed ? "secondary" : "primary"}>
+        <Typography variant="h5" color={reversed ? "secondary" : "primary"} noWrap>
           {label}
         </Typography>
       </MuiLink>
@@ -65,6 +65,7 @@ const InnerNavigateButton: React.FC<InnerNavigateButtonProps> = ({
           transform: hovered || tapped ? "rotate(15deg)" : "rotate(0deg)",
         }}
         transition={{ duration: 0.2 }}
+        sx={{display: "flex", justifyContent: "center"}}
       >
         {icon}
       </Box>

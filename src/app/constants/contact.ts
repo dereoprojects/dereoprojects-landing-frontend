@@ -1,6 +1,5 @@
 export const ContactData = {
     businessMail: "oguzhanderebusiness@gmail.com",
-    projectMail: "dereoprojects@gmail.com",
     phoneNumber: "+90 531 010 3235",
     linkedInURL: "https://www.linkedin.com/in/osandere/",
     githubURL: "https://github.com/dereoprojects",
