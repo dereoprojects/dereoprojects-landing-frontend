@@ -60,9 +60,9 @@ const ProjectSection = ({
         py: {xs: 3, md: 0.5},
         alignItems: "center",
         minHeight: "70vh",
-        width: "100%", //When i make this 500 px for example, issue is gone
+        width: "100%",
         position: "relative",
-        overflow: "visible", // Prevent content overflow
+        overflow: "visible",
         backgroundColor: reversed ? "primary.main" : "secondary.main",
       }}
     >

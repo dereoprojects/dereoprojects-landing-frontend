@@ -37,7 +37,7 @@ const BrandText = () => {
             animate={{ pathLength: 1 }}
             transition={{
               duration: 2,
-              delay: index * 0.5, // Delay each path animation
+              delay: index * 0.2, // Delay each path animation
               ease: "easeInOut",
             }}
           />

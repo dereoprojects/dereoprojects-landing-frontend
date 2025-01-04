@@ -146,7 +146,7 @@ export default function Home() {
                       }}
                       transition={{
                         duration: 0.5,
-                        delay: 4.5 + index * 0.1, // Delay each letter
+                        delay: 2 + index * 0.1, // Delay each letter
                       }}
                       style={{ display: "inline-block" }} // Ensures no extra line breaks
                     >
@@ -196,8 +196,8 @@ export default function Home() {
             display: "flex",
             height: "50%",
             flexDirection: "row",
-            px: 3,
-            pt: 3,
+            gap: 3,
+            
           }}
         >
           <BrushStrokeButton
@@ -218,7 +218,7 @@ export default function Home() {
             display: "flex",
             height: "50%",
             flexDirection: "row",
-            px: 3,
+            gap: 3,
             pb: 3,
           }}
         >
