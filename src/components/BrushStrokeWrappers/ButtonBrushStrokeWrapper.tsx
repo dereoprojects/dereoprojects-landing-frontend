@@ -37,15 +37,14 @@ const ButtonBrushStrokeWrapper: React.FC<ButtonBrushStrokeWrapperProps> = ({
   );
 
   React.useEffect(() => {
-    if (input && triggerPlay) {
+    if (input && triggerPlay && rive) {
       const timeoutId = setTimeout(() => {
-        input.value = reversed;
-        rive?.play();
+        rive.play();
       }, playDelay);
 
       return () => clearTimeout(timeoutId); // Cleanup timeout
     }
-  }, [input, triggerPlay, playDelay]);
+  }, [input, triggerPlay, playDelay, rive]);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const [artworkSize, setArtworkSize] = useState({ width: 0, height: 0 });

@@ -12,7 +12,7 @@ const AboutSection = ({
   title: string;
   text: string;
   icon?: React.ReactNode;
-  img: any;
+  img: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   reversed?: boolean;
 }) => {
   const ref = React.useRef(null);

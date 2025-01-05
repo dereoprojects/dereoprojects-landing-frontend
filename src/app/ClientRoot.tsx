@@ -25,10 +25,11 @@ export default function ClientRoot({
       {/* Spacer to account for AppBar's height */}
       <Toolbar sx={{ width: "100%" }} />
       <MainWithDrawer
-        children={children}
         drawerOpen={isDrawerOpen}
         drawerChange={handleDrawerChange}
-      />
+      >
+        {children}
+      </MainWithDrawer>
     </>
   );
 }
