@@ -8,7 +8,6 @@ import AboutSection from "./aboutSection";
 
 import { AboutSections } from "../constants/sections";
 
-
 export default function AboutPage() {
   return (
     <Container
@@ -23,9 +22,10 @@ export default function AboutPage() {
         flexDirection: "column",
         position: "relative",
         width: "100%",
+        overflowY: "scroll",
       }}
     >
-      {AboutSections.map((section, index) => (
+      {AboutSections.map((section, index, array) => (
         <React.Fragment key={index}>
           <AboutSection
             title={section.title}
@@ -33,6 +33,7 @@ export default function AboutPage() {
             text={section.text}
             img={section.img}
             reversed={section.reversed}
+            last={array.length - 1 === index}
           />
           {section.wave && (
             <Wave

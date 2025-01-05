@@ -21,9 +21,10 @@ export default function ProjectsPage() {
         flexDirection: "column",
         position: "relative",
         width: "100%",
+        overflowY: "scroll"
       }}
     >
-      {ProjectSections.map((section, index) => (
+      {ProjectSections.map((section, index, array) => (
         <React.Fragment key={index}>
           <ProjectSection
             title={section.title}
@@ -31,6 +32,7 @@ export default function ProjectsPage() {
             text={section.text}
             component={section.component}
             reversed={section.reversed}
+            last={array.length - 1 === index}
           />
           {section.wave && (
             <Wave

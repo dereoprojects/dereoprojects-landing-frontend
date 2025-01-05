@@ -7,18 +7,20 @@ const ProjectSection = ({
   text,
   icon,
   component,
+  last = false,
   reversed = false,
 }: {
   title: string;
   text: string;
   icon?: React.ReactNode;
+  last?: boolean;
   component?: React.ReactNode;
   reversed?: boolean;
 }) => {
   const ref = React.useRef(null);
   const { scrollYProgress: enterScrollProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end end"],
+    offset: ["start end", last ? "0.7 end" :  "end end"],
   });
 
   const { scrollYProgress: exitScrollProgress } = useScroll({

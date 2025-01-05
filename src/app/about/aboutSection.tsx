@@ -7,18 +7,20 @@ const AboutSection = ({
   text,
   icon,
   img,
+  last = false,
   reversed = false,
 }: {
   title: string;
   text: string;
   icon?: React.ReactNode;
   img: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  last?: boolean;
   reversed?: boolean;
 }) => {
   const ref = React.useRef(null);
   const { scrollYProgress: enterScrollProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end end"],
+    offset: ["start end", last ? "0.7 end" : "end end"],
   });
 
   const { scrollYProgress: exitScrollProgress } = useScroll({
@@ -56,13 +58,13 @@ const AboutSection = ({
         display: "flex",
         flexDirection: { xs: "column", sm: "row" },
         justifyContent: "center",
-        gap: {xs: 3, sm: 2},
+        gap: { xs: 3, sm: 2 },
         alignItems: "center",
         minHeight: "70vh",
-        py: {xs: 3, md: 0.5},
-        width: "100%", 
+        py: { xs: 3, md: 0.5 },
+        width: "100%",
         position: "relative",
-        overflow: "visible", 
+        overflow: "visible",
         backgroundColor: reversed ? "primary.main" : "secondary.main",
       }}
     >
@@ -70,10 +72,10 @@ const AboutSection = ({
       <Box
         sx={{
           display: "flex",
-          flex: {xs: 6, sm: 5},
+          flex: { xs: 6, sm: 5 },
           flexDirection: "column",
           justifyContent: "center",
-          px: {xs: 3, sm: 5},
+          px: { xs: 3, sm: 5 },
         }}
       >
         <Box
@@ -123,7 +125,10 @@ const AboutSection = ({
                 <Typography
                   component="div"
                   variant="h3"
-                  sx={{ color: reversed ? "secondary.main" : "primary.main", fontSize: {xs: "7vw", sm: "2rem"} }}
+                  sx={{
+                    color: reversed ? "secondary.main" : "primary.main",
+                    fontSize: { xs: "7vw", sm: "2rem" },
+                  }}
                 >
                   {title}
                 </Typography>
@@ -151,7 +156,7 @@ const AboutSection = ({
         sx={{
           display: "flex",
           justifyContent: "center",
-          flex: {xs: 4, sm: 5},
+          flex: { xs: 4, sm: 5 },
           overflow: "hidden",
         }}
       >
@@ -174,7 +179,6 @@ const AboutSection = ({
             style={{
               x: animationXLeave,
               opacity: opacityLeave,
-              
             }}
           >
             <SvgIcon
