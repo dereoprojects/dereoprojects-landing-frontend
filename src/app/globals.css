@@ -1,4 +1,7 @@
 html, body{
-    position: relative;
     overscroll-behavior: none; /* Prevent rubber band effect */
+}
+
+html{
+    position: relative;
 }
