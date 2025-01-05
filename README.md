@@ -25,3 +25,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Libraries
 
 This project uses Framer Motion for HTML element based animations, Rive for canvas-based animation rendering, and Material UI for industry-standard design.
+
+## License
+
+- The source code is licensed under the [MIT License](./LICENSE).
+- All assets, including icons, logos, and brand names, are proprietary and not included under the open-source license.
