@@ -39,14 +39,9 @@ const ResponsiveAppBar: React.FC<ResponsiveAppBarProps> = ({
   }, [lastScrollY]);
 
   return (
-    <motion.div
-      initial={{ y: 0, opacity: 1 }}
-      animate={{
-        y: scrollDirection === "up" ? 0 : -100,
-        opacity: scrollDirection === "up" ? 1 : 0,
-      }}
-      transition={{ duration: 0.5, ease: "easeInOut" }}
-      style={{ position: "sticky", top: 0, zIndex: 1400, width: "100%" }}
+    <Box
+      
+      style={{ position: "fixed", top: 0, zIndex: 1400, width: "100%" }}
     >
       <AppBar
         position="fixed"
@@ -113,7 +108,7 @@ const ResponsiveAppBar: React.FC<ResponsiveAppBarProps> = ({
           </Box>
         </Toolbar>
       </AppBar>
-    </motion.div>
+    </Box>
   );
 };
 

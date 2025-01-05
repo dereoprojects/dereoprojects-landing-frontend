@@ -24,11 +24,17 @@ export default function ContactPage() {
       disableGutters
       sx={{
         display: "flex",
+        position: "relative",
         flexDirection: "column",
         height: "100%",
-        position: "relative",
       }}
     >
+      <Typography variant="h2" align="center" gutterBottom sx={{ mt: 5 }}>
+        Contact
+      </Typography>
+      <Typography variant="body1" align="center" sx={{ mb: 2 }}>
+        Feel free to contact me via phone, email, or through the links below:
+      </Typography>
       {/* Main content */}
       <Box
         component={motion.div}
@@ -37,18 +43,11 @@ export default function ContactPage() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "center",
+          justifyContent: "start",
           gap: 2,
           pt: 2,
         }}
       >
-        <Typography variant="h2" align="center" gutterBottom>
-          Contact
-        </Typography>
-        <Typography variant="body1" align="center" sx={{ mb: 2 }}>
-          Feel free to contact me via phone, email, or through the links below:
-        </Typography>
-
         {/* Phone */}
         <Box
           display="flex"
