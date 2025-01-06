@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { AppBar, Toolbar, IconButton, Box } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
@@ -16,6 +16,7 @@ const ResponsiveAppBar: React.FC<ResponsiveAppBarProps> = ({
   drawerChange,
   isDrawerOpen,
 }) => {
+  /*
   const [scrollDirection, setScrollDirection] = useState<"up" | "down" | null>(
     "up"
   );
@@ -37,12 +38,9 @@ const ResponsiveAppBar: React.FC<ResponsiveAppBarProps> = ({
       window.removeEventListener("scroll", handleScroll);
     };
   }, [lastScrollY]);
-
+*/
   return (
-    <Box
-      
-      style={{ position: "fixed", top: 0, zIndex: 1400, width: "100%" }}
-    >
+    <Box style={{ position: "fixed", top: 0, zIndex: 1400, width: "100%" }}>
       <AppBar
         position="fixed"
         sx={{ display: "flex", flexDirection: "row" }}
