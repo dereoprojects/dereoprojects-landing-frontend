@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Drawer, Box, Container, Toolbar } from "@mui/material";
 import AppbarNavigation from "@/components/ResponsiveAppBar/AppbarNavigation";
 
@@ -15,12 +15,28 @@ const MainWithDrawer: React.FC<MainWithDrawerProps> = ({
   drawerOpen,
   drawerChange,
 }) => {
+
+  useEffect(() => {
+    const updateViewportHeight = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
+    };
+
+    updateViewportHeight();
+    window.addEventListener("resize", updateViewportHeight);
+
+    return () => {
+      window.removeEventListener("resize", updateViewportHeight);
+    };
+  }, []);
+
   return (
     <Container
       component="main"
       disableGutters
       sx={{
-        height: { xs: "calc( 100vh - 56px )", sm: "calc( 100vh - 64px )" },
+        height: "calc(var(--vh, 1vh) * 100)",
+        paddingTop: { xs: "56px", sm: "64px" },
       }}
       maxWidth={false}
     >
