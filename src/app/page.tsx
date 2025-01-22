@@ -86,9 +86,9 @@ export default function Home() {
               <Container
                 sx={{
                   position: "absolute",
-                  left: "2%",
-                  top: "9%",
-                  height: "10%",
+                  left: "25%",
+                  top: "33%",
+                  height: "18%",
                   width: "fit-content",
                 }}
                 disableGutters
@@ -100,28 +100,28 @@ export default function Home() {
                 disableGutters
                 sx={{
                   position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  height: "50%",
+                  top: "44.3%",
+                  left: "59.8%",
+                  height: "10.5%",
                   transform: "translate(-50%, -50%)",
                 }}
               >
-                <BrandIcon shining></BrandIcon>
+                <BrandIcon></BrandIcon>
               </Container>
 
               <Container
                 disableGutters
                 sx={{
                   position: "absolute",
-                  top: "70%",
-                  left: "60%",
+                  top: "53%",
+                  left: "30%",
                   height: "20%",
                   width: "45%",
-                  transform: "rotate(-30deg)",
+                  transform: "rotate(-3deg)",
                 }}
               >
                 <Typography
-                  color="primary.main"
+                  color="secondary.main"
                   variant="h1"
                   sx={{
                     display: "flex",
