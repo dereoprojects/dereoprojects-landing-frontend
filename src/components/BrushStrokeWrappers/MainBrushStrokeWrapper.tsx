@@ -38,7 +38,7 @@ const MainBrushStrokeWrapper: React.FC<MainBrushStrokeWrapperProps> = ({
         rive.off(EventType.Stop, onStop);
       };
     }
-  }, [rive]);
+  }, [rive, onEvent]);
 
   useEffect(() => {
     const container = containerRef.current;

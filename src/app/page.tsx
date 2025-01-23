@@ -137,7 +137,7 @@ export default function Home() {
                     },
                   }}
                 >
-                  {"Projects".split("").map((char, index, arr) => (
+                  {"Projects".split("").map((char, index) => (
                     <motion.span
                       key={index}
                       initial={{ y: 70, x: -70, opacity: 0 }}
@@ -186,7 +186,8 @@ export default function Home() {
           width: "100%",
           flexGrow: 1,
           flexDirection: "column",
-          padding: 3,
+          px: 3,
+          pb: 3
         }}
       >
         <Box
