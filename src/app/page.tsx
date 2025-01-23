@@ -10,7 +10,6 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { ContactData } from "./constants/contact";
 
-
 export default function Home() {
   const router = useRouter();
 
@@ -21,7 +20,7 @@ export default function Home() {
   };
 
   const openCV = () => {
-    ; // Adjust the path to match your CV file location
+    // Adjust the path to match your CV file location
     window.open(ContactData.cvPath, "_blank", "noopener,noreferrer");
   };
 
@@ -73,7 +72,11 @@ export default function Home() {
           ></BrushStrokeButton>
         </Box>
         <Box sx={{ flex: { xs: 2, md: 5 }, height: "100%" }}>
-          <MainBrushStrokeWrapper>
+          <MainBrushStrokeWrapper
+            onEvent={(event) => {
+              if (event === "stop") setTriggerButtonsRender(true);
+            }}
+          >
             <Container
               disableGutters
               sx={{
@@ -137,15 +140,10 @@ export default function Home() {
                   {"Projects".split("").map((char, index, arr) => (
                     <motion.span
                       key={index}
-                      initial={{ y: 50, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      onAnimationComplete={() => {
-                        if (index === arr.length - 1) {
-                          setTriggerButtonsRender(true);
-                        }
-                      }}
+                      initial={{ y: 70, x: -70, opacity: 0 }}
+                      animate={{ y: 0, x: 0, opacity: 1 }}
                       transition={{
-                        duration: 0.5,
+                        duration: 0.3,
                         delay: 2 + index * 0.1, // Delay each letter
                       }}
                       style={{ display: "inline-block" }} // Ensures no extra line breaks
@@ -197,7 +195,6 @@ export default function Home() {
             height: "50%",
             flexDirection: "row",
             gap: 3,
-            
           }}
         >
           <BrushStrokeButton

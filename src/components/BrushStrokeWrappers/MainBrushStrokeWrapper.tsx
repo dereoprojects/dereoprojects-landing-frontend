@@ -1,13 +1,21 @@
 import React, { ReactNode, useEffect, useRef, useState } from "react";
-import { useRive, Layout, Fit, Alignment } from "@rive-app/react-canvas";
+import {
+  useRive,
+  Layout,
+  Fit,
+  Alignment,
+  EventType,
+} from "@rive-app/react-canvas";
 import { calculateActualDimensions } from "@/utils/helpers";
 
 interface MainBrushStrokeWrapperProps {
   children: ReactNode;
+  onEvent?: (event: string) => void;
 }
 
 const MainBrushStrokeWrapper: React.FC<MainBrushStrokeWrapperProps> = ({
   children,
+  onEvent,
 }) => {
   const { rive, RiveComponent } = useRive({
     src: "/assets/brushes/brush_1.riv",
@@ -17,6 +25,20 @@ const MainBrushStrokeWrapper: React.FC<MainBrushStrokeWrapperProps> = ({
 
   const containerRef = useRef<HTMLDivElement>(null);
   const [artworkSize, setArtworkSize] = useState({ width: 0, height: 0 });
+  useEffect(() => {
+    if (rive) {
+      onEvent?.("start");
+      const onStop = () => {
+        onEvent?.("stop");
+      };
+
+      rive.on(EventType.Stop, onStop);
+
+      return () => {
+        rive.off(EventType.Stop, onStop);
+      };
+    }
+  }, [rive]);
 
   useEffect(() => {
     const container = containerRef.current;
