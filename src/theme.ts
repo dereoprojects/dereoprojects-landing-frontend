@@ -5,9 +5,11 @@ import { Courgette, Poppins, Water_Brush } from "next/font/google";
 declare module "@mui/material/styles/createPalette" {
   interface Palette {
     accent: Palette["primary"];
+    accent2: Palette["primary"];
   }
   interface PaletteOptions {
     accent?: PaletteOptions["primary"];
+    accent2?: PaletteOptions["primary"];
   }
 }
 
@@ -25,6 +27,9 @@ const theme = createTheme({
     },
     accent: {
       main: "#FFD700",
+    },
+    accent2: {
+      main: "#CAB88C",
     },
     background: {
       default: "#F8D8BA",

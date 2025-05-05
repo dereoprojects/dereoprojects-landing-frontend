@@ -52,9 +52,9 @@ const InnerNavigateButton: React.FC<InnerNavigateButtonProps> = ({
         href={navigate}
         passHref
         underline="hover"
-        color={reversed ? "secondary" : "primary"}
+        color= "primary"
       >
-        <Typography variant="h5" color={reversed ? "secondary" : "primary"} noWrap>
+        <Typography variant="h5" color="primary" noWrap>
           {label}
         </Typography>
       </MuiLink>

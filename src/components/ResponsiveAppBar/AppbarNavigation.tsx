@@ -2,6 +2,7 @@ import { Box, Button, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTheme } from "@mui/material/styles";
 
 interface AppbarNavigationProps {
   text?: string;
@@ -15,10 +16,13 @@ const AppbarNavigation: React.FC<AppbarNavigationProps> = ({
   text = "",
   value = "",
   backgroundColor = "transparent",
-  defaultColor = "secondary.main",
+  defaultColor = "primary.main",
   selectedColor = "accent.main",
 }) => {
   const pathname = usePathname();
+  const isSelected = pathname === value;
+  const theme = useTheme();
+
   return (
     <Box
       component={motion.div}
@@ -28,7 +32,7 @@ const AppbarNavigation: React.FC<AppbarNavigationProps> = ({
       <Button
         component={Link}
         sx={{
-          color: pathname === value ? selectedColor : defaultColor,
+          color: defaultColor,
           height: "100%",
           backgroundColor,
           flex: 1,
@@ -38,7 +42,34 @@ const AppbarNavigation: React.FC<AppbarNavigationProps> = ({
         }}
         href={value}
       >
-        <Typography variant="h4">{text}</Typography>
+                <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <Typography
+            variant="h4"
+            sx={{
+              pb: "2px",
+            }}
+          >
+            {text}
+          </Typography>
+          <motion.div
+            layout
+            initial={false}
+            animate={{
+              width: isSelected ? "100%" : "0%",
+              opacity: isSelected ? 1 : 0,
+            }}
+            transition={{ type: "spring", stiffness: 400, damping: 30 }}
+          >
+            <Box
+              sx={{
+                height: 2,
+                borderRadius: 1,
+                backgroundColor: theme.palette.primary.main,
+                width: "100%",
+              }}
+            />
+          </motion.div>
+        </Box>
       </Button>
     </Box>
   );

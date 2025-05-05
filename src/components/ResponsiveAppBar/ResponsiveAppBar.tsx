@@ -2,12 +2,14 @@
 
 import React from "react";
 import { AppBar, Toolbar, IconButton, Box } from "@mui/material";
+import { useTheme, alpha } from "@mui/material/styles"; // Add this import
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import Brand from "@/components/Brand/Brand";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import AppbarNavigation from "./AppbarNavigation";
+
 interface ResponsiveAppBarProps {
   drawerChange: (open: boolean) => void;
   isDrawerOpen: boolean;
@@ -16,6 +18,8 @@ const ResponsiveAppBar: React.FC<ResponsiveAppBarProps> = ({
   drawerChange,
   isDrawerOpen,
 }) => {
+  const theme = useTheme(); // Access the theme
+
   /*
   const [scrollDirection, setScrollDirection] = useState<"up" | "down" | null>(
     "up"
@@ -43,8 +47,14 @@ const ResponsiveAppBar: React.FC<ResponsiveAppBarProps> = ({
     <Box style={{ position: "fixed", top: 0, zIndex: 1400, width: "100%" }}>
       <AppBar
         position="fixed"
-        sx={{ display: "flex", flexDirection: "row" }}
-        color="primary"
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          background: alpha(theme.palette.secondary.main, 0.3),
+          backdropFilter: "blur(10px) saturate(115%)",
+          WebkitBackdropFilter: "blur(10px) saturate(115%)",
+          borderBottom: "0.5px solid rgba(255, 255, 255, 0.18)",
+        }}
       >
         <Toolbar
           sx={{
@@ -82,7 +92,7 @@ const ResponsiveAppBar: React.FC<ResponsiveAppBarProps> = ({
             onClick={() => drawerChange(false)}
           >
             <Link href="/">
-              <Brand shining />
+              <Brand />
             </Link>
           </Box>
 

@@ -10,9 +10,10 @@ import { Container } from "@mui/material";
 
 interface BrandProps {
   shining?: boolean;
+  color?: string;
 }
 
-const Brand: React.FC<BrandProps> = ({ shining = false }) => {
+const Brand: React.FC<BrandProps> = ({ shining = false, color = "primary.main" }) => {
   return (
     <Box display="flex" alignItems="center" gap={1}>
       {/* Dereo Icon */}
@@ -24,7 +25,7 @@ const Brand: React.FC<BrandProps> = ({ shining = false }) => {
         component={DereoText} // Pass the SVG component
         inheritViewBox
         fontSize="large"
-        sx={{ color: "secondary.main", height: "40px", width: "auto" }}
+        sx={{ color: color, height: "40px", width: "auto" }}
       />
     </Box>
   );

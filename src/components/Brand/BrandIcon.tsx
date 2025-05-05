@@ -13,7 +13,7 @@ const BrandIcon = ({ shining = false }: { shining?: boolean }) => {
       inheritViewBox
       fontSize="large"
       titleAccess=""
-      sx={{ color: "secondary.main", height: "100%", width: "auto" }}
+      sx={{ color: "primary.main", height: "100%", width: "auto" }}
     />
   );
 };

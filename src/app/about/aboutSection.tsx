@@ -65,7 +65,7 @@ const AboutSection = ({
         width: "100%",
         position: "relative",
         overflow: "visible",
-        backgroundColor: reversed ? "primary.main" : "secondary.main",
+        backgroundColor: reversed ? "accent2.main" : "secondary.main",
       }}
     >
       {/* Left Side: Content */}
@@ -126,7 +126,7 @@ const AboutSection = ({
                   component="div"
                   variant="h3"
                   sx={{
-                    color: reversed ? "secondary.main" : "primary.main",
+                    color: "primary.main",
                     fontSize: { xs: "7vw", sm: "2rem" },
                   }}
                 >
@@ -141,7 +141,7 @@ const AboutSection = ({
             <Box sx={{ justifyContent: { xs: "center", sm: "normal" } }}>
               <Typography
                 sx={{
-                  color: reversed ? "text.secondary" : "text.primary",
+                  color: "text.primary",
                   textAlign: { xs: "center", sm: "start" },
                 }}
               >
@@ -185,7 +185,7 @@ const AboutSection = ({
               component={img}
               inheritViewBox
               sx={{
-                color: reversed ? "secondary.main" : "primary.main",
+                color: "primary.main",
                 height: "100%",
                 width: "100%",
                 maxHeight: "100%", // Constrain height

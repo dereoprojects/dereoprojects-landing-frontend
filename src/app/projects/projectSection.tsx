@@ -65,7 +65,7 @@ const ProjectSection = ({
         width: "100%",
         position: "relative",
         overflow: "visible",
-        backgroundColor: reversed ? "primary.main" : "secondary.main",
+        backgroundColor: reversed ? "accent2.main" : "secondary.main",
       }}
     >
       {/* Left Side: Content */}
@@ -125,7 +125,7 @@ const ProjectSection = ({
                 <Typography
                   component="div"
                   variant="h3"
-                  sx={{ color: reversed ? "secondary.main" : "primary.main", fontSize: {xs: "7vw", sm: "2rem"}  }}
+                  sx={{ color: "primary.main", fontSize: {xs: "7vw", sm: "2rem"}  }}
                 >
                   {title}
                 </Typography>
@@ -138,7 +138,7 @@ const ProjectSection = ({
             <Box sx={{ justifyContent: { xs: "center", sm: "normal" } }}>
               <Typography
                 sx={{
-                  color: reversed ? "text.secondary" : "text.primary",
+                  color: "text.primary",
                   textAlign: { xs: "center", sm: "start" },
                 }}
               >

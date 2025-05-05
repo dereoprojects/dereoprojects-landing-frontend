@@ -9,11 +9,12 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 import DescriptionIcon from "@mui/icons-material/Description";
-
+import { useTheme } from "@mui/material/styles";
 import Wave from "@/components/Wave/Wave";
 import { ContactData } from "../constants/contact";
 
 export default function ContactPage() {
+  const theme = useTheme();
   return (
     <Container
       maxWidth={false}
@@ -85,7 +86,7 @@ export default function ContactPage() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Business
+            {ContactData.businessMail}
           </MuiLink>
         </Box>
 
@@ -174,7 +175,7 @@ export default function ContactPage() {
       </Box>
 
       <Box sx={{ width: "100%", overflow: "hidden" }}>
-        <Wave />
+        <Wave color={theme.palette.accent2.main} />
       </Box>
     </Container>
   );

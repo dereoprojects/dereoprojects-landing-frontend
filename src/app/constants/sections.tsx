@@ -18,20 +18,20 @@ export const AboutSections = [
     img: AboutMeIcon,
     reversed: false,
     wave: {
-      color: "primary.main",
+      color: "accent2.main",
       backgroundColor: "secondary.main",
       selectedWave: 0,
     },
   },
   {
     title: "Purpose of This Page",
-    icon: <PublicIcon fontSize="large" sx={{ color: "secondary.main" }} />,
+    icon: <PublicIcon fontSize="large" sx={{ color: "primary.main" }} />,
     text: "This page is my digital portfolio, a space where I showcase my personal work and projects while offering a window into who I am. Beyond the technical, it’s a reflection of my ideas, passions, and the journey that has shaped me. By sharing my story and creations, I hope to connect with others and offer a deeper understanding of the person behind the work.",
     img: AboutPurposeIcon,
     reversed: true,
     wave: {
       color: "secondary.main",
-      backgroundColor: "primary.main",
+      backgroundColor: "accent2.main",
       selectedWave: 1,
     },
   },
@@ -44,14 +44,14 @@ export const AboutSections = [
     img: AboutIdealsIcon,
     reversed: false,
     wave: {
-      color: "primary.main",
+      color: "accent2.main",
       backgroundColor: "secondary.main",
       selectedWave: 2,
     },
   },
   {
     title: "Life Beyond Work",
-    icon: <FavoriteIcon fontSize="large" sx={{ color: "secondary.main" }} />,
+    icon: <FavoriteIcon fontSize="large" sx={{ color: "primary.main" }} />,
     text: "I find joy in exploring new ways to appreciate life and discovering what truly resonates with me. As a drummer with an interest in music production, I’m deeply connected to the rhythm and flow of creativity, which also fuels my passion for dancing. Other than these, I cherish moments spent café-hopping with friends, engaging in meaningful conversations about life’s perspectives and shared experiences. These pursuits not only bring me happiness but also shape the way I view and engage with the world.",
     img: AboutHobbiesIcon,
     reversed: true,
@@ -71,20 +71,20 @@ export const ProjectSections = [
     ),
     reversed: false,
     wave: {
-      color: "primary.main",
+      color: "accent2.main",
       backgroundColor: "secondary.main",
       selectedWave: 0,
     },
   },
   {
     title: "Your Next Idea",
-    icon: <LightbulbIcon fontSize="large" sx={{ color: "secondary.main" }} />,
+    icon: <LightbulbIcon fontSize="large" sx={{ color: "primary.main" }} />,
     component: (
       <InnerNavigateButton
         reversed
         navigate="/contact"
         label="Contact Now"
-        icon={<LightbulbIcon></LightbulbIcon>}
+        icon={<LightbulbIcon sx={{ color: "primary.main" }}></LightbulbIcon>}
       />
     ),
     text: "Have an innovative idea you’re eager to bring to life? If you believe in its potential and are ready to take the next step toward turning it into reality, I’d be delighted to collaborate. Let’s discuss how we can transform your vision into a successful project. Feel free to reach out and connect!",
