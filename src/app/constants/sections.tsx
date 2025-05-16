@@ -92,3 +92,26 @@ export const ProjectSections = [
     wave: null,
   },
 ];
+
+export const ColumnSections = {
+  Projects: {
+    title: "Projects",
+    description:
+      "From emotion-based music recommendations to production-ready digital solutions, my projects reflect both innovation and robustness. Discover what I’ve built and why.",
+    buttonText: "See Projects",
+    buttonLink: "/projects",
+  },
+  About: {
+    title: "About",
+    description:
+      "I’m a developer who blends creativity with code to craft thoughtful, impactful digital experiences. My passion lies in turning imaginative ideas into functional, elegant solutions.",
+    buttonText: "Learn More",
+    buttonLink: "/about",
+  },
+  Contact: {
+    title: "Contact",
+    description: "Ready to communicate? Let's connect and explore what we can create together.",
+    buttonText: "Contact Me",
+    buttonLink: "/contact",
+  },
+};

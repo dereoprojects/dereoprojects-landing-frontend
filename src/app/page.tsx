@@ -1,239 +1,180 @@
 "use client";
 
-import BrandIcon from "@/components/Brand/BrandIcon";
-import BrandText from "@/components/Brand/BrandText";
-import BrushStrokeButton from "@/components/BrushStrokeWrappers/BrushStrokeButton";
-import MainBrushStrokeWrapper from "@/components/BrushStrokeWrappers/MainBrushStrokeWrapper";
-import { Box, Container, Typography } from "@mui/material";
-import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { ContactData } from "./constants/contact";
+import { Box } from "@mui/material";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { useTheme } from "@mui/material/styles";
+import * as THREE from "three";
+import { useScroll } from "framer-motion";
+import MainSections from "@/components/MainSections/MainSections";
 
-export default function Home() {
-  const router = useRouter();
+const HeroSection = ({ onVantaReady }: { onVantaReady: () => void }) => {
+  const theme = useTheme();
+  const heroRef = useRef<HTMLDivElement>(null);
+  const vantaRef = useRef<any>(null);
+  const [isVantaReady, setIsVantaReady] = useState(false);
+  const { scrollYProgress } = useScroll();
 
-  const [triggerButtonsRender, setTriggerButtonsRender] = useState(false);
+  // ✅ Color transitions (keep start, adjust end for clarity)
 
-  const navigate = (navigateTo: string) => {
-    router.push(navigateTo);
-  };
+  const skyColorStart = theme.palette.secondary.main; // #F8D8BA
+  const skyColorEnd = "#EED9A3"; // soft muted amber
 
-  const openCV = () => {
-    // Adjust the path to match your CV file location
-    window.open(ContactData.cvPath, "_blank", "noopener,noreferrer");
-  };
+  const cloudColorStart = theme.palette.accent2.main; // #CAB88C
+  const cloudColorEnd = "#D4C2A0"; // soft dusty beige
+
+  const cloudShadowColorStart = theme.palette.accent2.main; // #CAB88C
+  const cloudShadowColorEnd = "#BBA786"; // light brown contrast
+
+  const sunColorStart = theme.palette.accent.main; // #FFD700
+  const sunColorEnd = "#FBE3A2"; // soft buttery gold
+
+  const sunGlareColorStart = "#FFFFFF"; // pure white
+  const sunGlareColorEnd = "#FAF3DE"; // off-white warm light
+
+  const sunlightColorStart = "#FFF8DC"; // cornsilk
+  const sunlightColorEnd = "#EEDFB7"; // soft yellow-cream
+
+  const cleanupVanta = useCallback(() => {
+    if (vantaRef.current) {
+      try {
+        vantaRef.current.destroy();
+      } catch (e) {
+        console.warn("Vanta destroy error", e);
+      }
+      vantaRef.current = null;
+    }
+  }, []);
+
+  useEffect(() => {
+    let mounted = true;
+
+    if (!vantaRef.current && heroRef.current) {
+      import("vanta/dist/vanta.clouds.min").then((VANTA) => {
+        if (!mounted) return;
+
+        const effect = VANTA.default({
+          el: heroRef.current,
+          THREE,
+          skyColor: skyColorStart,
+          cloudColor: cloudColorStart,
+          backgroundColor: theme.palette.accent.main,
+          sunColor: sunColorStart,
+          cloudShadowColor: cloudShadowColorStart,
+          sunGlareColor: sunGlareColorStart,
+          sunlightColor: sunlightColorStart,
+          speed: 1,
+          mouseControls: false,
+          touchControls: false,
+          gyroControls: false,
+        });
+
+        vantaRef.current = effect;
+        setIsVantaReady(true);
+        onVantaReady();
+      });
+    }
+
+    return () => {
+      mounted = false;
+      cleanupVanta();
+    };
+  }, [onVantaReady, cleanupVanta, theme]);
+
+  // Animate colors on scroll
+  useEffect(() => {
+    let currentSky = new THREE.Color(skyColorStart);
+    let currentCloud = new THREE.Color(cloudColorStart);
+    let currentCloudShadow = new THREE.Color(cloudShadowColorStart);
+    let currentSun = new THREE.Color(sunColorStart);
+    let currentSunGlare = new THREE.Color(sunGlareColorStart);
+    let currentSunlight = new THREE.Color(sunlightColorStart);
+
+    const update = () => {
+      const t = Math.max(0, Math.min(1, scrollYProgress.get()));
+      // Calculate target colors
+      const targetSky = new THREE.Color(skyColorStart).lerp(
+        new THREE.Color(skyColorEnd),
+        t
+      );
+      const targetCloud = new THREE.Color(cloudColorStart).lerp(
+        new THREE.Color(cloudColorEnd),
+        t
+      );
+      const targetCloudShadow = new THREE.Color(cloudShadowColorStart).lerp(
+        new THREE.Color(cloudShadowColorEnd),
+        t
+      );
+      const targetSun = new THREE.Color(sunColorStart).lerp(
+        new THREE.Color(sunColorEnd),
+        t
+      );
+      const targetSunGlare = new THREE.Color(sunGlareColorStart).lerp(
+        new THREE.Color(sunGlareColorEnd),
+        t
+      );
+      const targetSunlight = new THREE.Color(sunlightColorStart).lerp(
+        new THREE.Color(sunlightColorEnd),
+        t
+      );
+
+      // Smoothly interpolate toward targets
+      currentSky.lerp(targetSky, 0.05);
+      currentCloud.lerp(targetCloud, 0.05);
+      currentCloudShadow.lerp(targetCloudShadow, 0.05);
+      currentSun.lerp(targetSun, 0.05);
+      currentSunGlare.lerp(targetSunGlare, 0.05);
+      currentSunlight.lerp(targetSunlight, 0.05);
+
+      if (vantaRef.current) {
+        vantaRef.current.setOptions({
+          skyColor: `#${currentSky.getHexString()}`,
+          cloudColor: `#${currentCloud.getHexString()}`,
+          cloudShadowColor: `#${currentCloudShadow.getHexString()}`,
+          sunColor: `#${currentSun.getHexString()}`,
+          sunGlareColor: `#${currentSunGlare.getHexString()}`,
+          sunlightColor: `#${currentSunlight.getHexString()}`,
+        });
+      }
+
+      requestAnimationFrame(update);
+    };
+
+    requestAnimationFrame(update);
+  }, [scrollYProgress]);
 
   return (
-    <Container
-      component={motion.div}
-      maxWidth={false}
-      initial={{ opacity: 1 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 2 }}
-      disableGutters
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        position: "relative",
-        width: "100%",
-        height: "100%",
+    <div
+      ref={heroRef}
+      style={{
+        width: "100vw",
+        height: "100vh",
+        position: "fixed",
+        top: 0,
+        left: 0,
+        zIndex: 0,
+        opacity: 1,
       }}
-    >
+    />
+  );
+};
+
+export default function Home() {
+  const [isVantaReady, setIsVantaReady] = useState(false);
+  const { scrollYProgress } = useScroll();
+
+  return (
+    <Box sx={{ width: "100vw", height: "400vh", overflowX: "hidden" }}>
+      <HeroSection onVantaReady={() => setIsVantaReady(true)} />
       <Box
         sx={{
-          height: {
-            sm: "100%",
-            xs: "50%",
-          },
-          display: "flex",
-          flexDirection: "row",
-          width: "100%",
+          position: "relative",
+          zIndex: 1,
+          opacity: isVantaReady ? 1 : 0,
+          transition: "opacity 0.5s ease-in-out",
         }}
       >
-        <Box
-          sx={{
-            display: { sm: "flex", xs: "none" },
-            flexDirection: "column",
-            flex: 1,
-            padding: 1,
-          }}
-        >
-          <BrushStrokeButton
-            text="Projects"
-            onClick={() => navigate("/projects")}
-            triggerPlay={triggerButtonsRender}
-          ></BrushStrokeButton>
-          <BrushStrokeButton
-            text="About"
-            onClick={() => navigate("/about")}
-            triggerPlay={triggerButtonsRender}
-            playDelay={500}
-          ></BrushStrokeButton>
-        </Box>
-        <Box sx={{ flex: { xs: 2, md: 5 }, height: "100%" }}>
-          <MainBrushStrokeWrapper
-            onEvent={(event) => {
-              if (event === "stop") setTriggerButtonsRender(true);
-            }}
-          >
-            <Container
-              disableGutters
-              sx={{
-                width: "100%",
-                height: "100%",
-                position: "relative", // Ensure child items are positioned relative to this container
-                overflow: "hidden",
-              }}
-            >
-              <Container
-                sx={{
-                  position: "absolute",
-                  left: "25%",
-                  top: "33%",
-                  height: "18%",
-                  width: "fit-content",
-                }}
-                disableGutters
-              >
-                <BrandText />
-              </Container>
-
-              <Container
-                disableGutters
-                sx={{
-                  position: "absolute",
-                  top: "44.3%",
-                  left: "59.8%",
-                  height: "10.5%",
-                  transform: "translate(-50%, -50%)",
-                }}
-              >
-                <BrandIcon></BrandIcon>
-              </Container>
-
-              <Container
-                disableGutters
-                sx={{
-                  position: "absolute",
-                  top: "53%",
-                  left: "30%",
-                  height: "20%",
-                  width: "45%",
-                  transform: "rotate(-3deg)",
-                }}
-              >
-                <Typography
-                  color="secondary.main"
-                  variant="h1"
-                  sx={{
-                    display: "flex",
-                    gap: 0.5,
-                    userSelect: "none",
-                    fontSize: {
-                      xs: "clamp(0.8rem, 10vw, 3rem)",
-                      sm: "clamp(1rem, 6vw, 2.5rem)",
-                      md: "clamp(1rem, 10vw, 5rem)",
-                    },
-                  }}
-                >
-                  {"Projects".split("").map((char, index) => (
-                    <motion.span
-                      key={index}
-                      initial={{ y: 70, x: -70, opacity: 0 }}
-                      animate={{ y: 0, x: 0, opacity: 1 }}
-                      transition={{
-                        duration: 0.3,
-                        delay: 2 + index * 0.1, // Delay each letter
-                      }}
-                      style={{ display: "inline-block" }} // Ensures no extra line breaks
-                    >
-                      {char}
-                    </motion.span>
-                  ))}
-                </Typography>
-              </Container>
-            </Container>
-          </MainBrushStrokeWrapper>
-        </Box>
-        <Box
-          sx={{
-            display: { sm: "flex", xs: "none" },
-            flexDirection: "column",
-            flex: 1,
-            padding: 1,
-          }}
-        >
-          <BrushStrokeButton
-            text="Contact"
-            onClick={() => navigate("/contact")}
-            triggerPlay={triggerButtonsRender}
-            reversed
-          ></BrushStrokeButton>
-          <BrushStrokeButton
-            text="CV"
-            onClick={() => openCV()}
-            triggerPlay={triggerButtonsRender}
-            playDelay={500}
-            reversed
-          ></BrushStrokeButton>
-        </Box>
+        <MainSections scrollProgress={scrollYProgress} />
       </Box>
-
-      <Box
-        sx={{
-          display: { xs: "flex", sm: "none" },
-          width: "100%",
-          flexGrow: 1,
-          flexDirection: "column",
-          px: 3,
-          pb: 3
-        }}
-      >
-        <Box
-          sx={{
-            display: "flex",
-            height: "50%",
-            flexDirection: "row",
-            gap: 3,
-          }}
-        >
-          <BrushStrokeButton
-            text="Projects"
-            onClick={() => navigate("/projects")}
-            triggerPlay={triggerButtonsRender}
-          ></BrushStrokeButton>
-          <BrushStrokeButton
-            text="About"
-            onClick={() => navigate("/about")}
-            triggerPlay={triggerButtonsRender}
-            playDelay={500}
-            reversed
-          ></BrushStrokeButton>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            height: "50%",
-            flexDirection: "row",
-            gap: 3,
-            pb: 3,
-          }}
-        >
-          <BrushStrokeButton
-            text="Contact"
-            onClick={() => navigate("/contact")}
-            triggerPlay={triggerButtonsRender}
-          ></BrushStrokeButton>
-          <BrushStrokeButton
-            text="CV"
-            onClick={() => openCV()}
-            triggerPlay={triggerButtonsRender}
-            playDelay={500}
-            reversed
-          ></BrushStrokeButton>
-        </Box>
-      </Box>
-    </Container>
+    </Box>
   );
 }

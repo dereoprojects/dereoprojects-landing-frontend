@@ -27,15 +27,11 @@ export default function ContactPage() {
         display: "flex",
         position: "relative",
         flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
         height: "100%",
       }}
     >
-      <Typography variant="h2" align="center" gutterBottom sx={{ mt: 5 }}>
-        Contact
-      </Typography>
-      <Typography variant="body1" align="center" sx={{ mb: 2 }}>
-        Feel free to contact me via phone, email, or through the links below:
-      </Typography>
       {/* Main content */}
       <Box
         component={motion.div}
@@ -44,7 +40,7 @@ export default function ContactPage() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "start",
+          justifyContent: "center",
           gap: 2,
           pt: 2,
         }}
