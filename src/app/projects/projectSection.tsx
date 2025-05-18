@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme, alpha } from "@mui/material";
 import { motion, useScroll, useTransform } from "framer-motion";
 import React from "react";
 
@@ -51,6 +51,8 @@ const ProjectSection = ({
     ["0px", "75px"]
   );
 
+  const theme = useTheme();
+
   return (
     <Box
       ref={ref}
@@ -65,7 +67,9 @@ const ProjectSection = ({
         width: "100%",
         position: "relative",
         overflow: "visible",
-        backgroundColor: reversed ? "accent2.main" : "secondary.main",
+        backgroundColor: reversed 
+          ? alpha(theme.palette.accent2.main, 0.7)
+          : alpha(theme.palette.secondary.main, 0.7),
       }}
     >
       {/* Left Side: Content */}

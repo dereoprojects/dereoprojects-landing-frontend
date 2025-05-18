@@ -9,8 +9,9 @@ import AboutIdealsIcon from "../../../public/assets/about/about_ideals.svg";
 import VisitWebsite from "@/components/VisitWebsite";
 import LightbulbIcon from "@mui/icons-material/Lightbulb";
 import InnerNavigateButton from "@/components/InnerNavigateButton";
+import { Theme, alpha } from "@mui/material";
 
-export const AboutSections = [
+export const AboutSections = (theme: Theme) =>  [
   {
     title: "Who I Am",
     icon: <EmojiPeopleIcon fontSize="large" sx={{ color: "primary.main" }} />,
@@ -18,8 +19,8 @@ export const AboutSections = [
     img: AboutMeIcon,
     reversed: false,
     wave: {
-      color: "accent2.main",
-      backgroundColor: "secondary.main",
+      color: alpha(theme.palette.accent2.main, 0.7),
+      backgroundColor: alpha(theme.palette.secondary.main, 0.7),
       selectedWave: 0,
     },
   },
@@ -30,8 +31,8 @@ export const AboutSections = [
     img: AboutPurposeIcon,
     reversed: true,
     wave: {
-      color: "secondary.main",
-      backgroundColor: "accent2.main",
+      color: alpha(theme.palette.secondary.main, 0.7),
+      backgroundColor: alpha(theme.palette.accent2.main, 0.7),
       selectedWave: 1,
     },
   },
@@ -44,8 +45,8 @@ export const AboutSections = [
     img: AboutIdealsIcon,
     reversed: false,
     wave: {
-      color: "accent2.main",
-      backgroundColor: "secondary.main",
+      color: alpha(theme.palette.accent2.main, 0.7),
+      backgroundColor: alpha(theme.palette.secondary.main, 0.7),
       selectedWave: 2,
     },
   },
@@ -59,7 +60,7 @@ export const AboutSections = [
   },
 ];
 
-export const ProjectSections = [
+export const ProjectSections = (theme: Theme) =>  [
   {
     title: "Keddy",
     text: 'Keddy is an advanced music personalization application that tailors recommendations and filtering to your preferences. Simply share how you feel to get personalized tracks and playlists, or curate and filter your favorite music using customizable presets. You can also host music sessions with friends by selecting your preferred "Vibes" for a shared listening experience.',
@@ -71,8 +72,8 @@ export const ProjectSections = [
     ),
     reversed: false,
     wave: {
-      color: "accent2.main",
-      backgroundColor: "secondary.main",
+      color: alpha(theme.palette.accent2.main, 0.7),
+      backgroundColor: alpha(theme.palette.secondary.main, 0.7),
       selectedWave: 0,
     },
   },

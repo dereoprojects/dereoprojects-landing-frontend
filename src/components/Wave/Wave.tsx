@@ -12,21 +12,20 @@ const Wave: React.FC<{
   backgroundColor?: string;
 }> = ({
   selectedWave = 0,
-  color = "primary.main",
-  backgroundColor = "secondary.main",
+  color,
+  backgroundColor,
 }) => {
   const WaveComponent = waves[selectedWave % waves.length]; // Ensure deterministic
 
   return (
     <Box
       sx={{
-        backgroundColor,
+        '--wave-bg': backgroundColor,
+        '--wave-fg': color,
         width: "100%",
         height: "fit-content",
-        marginBottom: "-1px",
       }}
     >
-      {/* this marginBottom is why i sometimes hate frontend */}
       <SvgIcon
         component={WaveComponent}
         inheritViewBox
@@ -35,7 +34,6 @@ const Wave: React.FC<{
           color,
           width: "100%",
           height: "auto",
-
           margin: 0,
           padding: 0,
           display: "block",

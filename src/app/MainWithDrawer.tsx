@@ -3,6 +3,7 @@
 import React, { useEffect } from "react";
 import { Drawer, Box, Container, Toolbar } from "@mui/material";
 import AppbarNavigation from "@/components/ResponsiveAppBar/AppbarNavigation";
+import VantaBackground from "@/components/VantaBackground/VantaBackground";
 
 interface MainWithDrawerProps {
   children: React.ReactNode;
@@ -36,10 +37,11 @@ const MainWithDrawer: React.FC<MainWithDrawerProps> = ({
       disableGutters
       sx={{
         height: "calc(var(--vh, 1vh) * 100)",
-        paddingTop: { xs: "56px", sm: "64px" },
+        //paddingTop: { xs: "56px", sm: "64px" },
       }}
       maxWidth={false}
     >
+      <VantaBackground />
       {children}
       <Drawer
         sx={{

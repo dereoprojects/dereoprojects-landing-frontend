@@ -1,13 +1,15 @@
 "use client";
 
 import React from "react";
-import { Container } from "@mui/material";
+import { Container, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
 import Wave from "@/components/Wave/Wave";
 import ProjectSection from "./projectSection";
 import { ProjectSections } from "../constants/sections";
 
 export default function ProjectsPage() {
+  const theme = useTheme();
+  const projectSections = ProjectSections(theme);
   return (
     <Container
       component={motion.div}
@@ -21,10 +23,10 @@ export default function ProjectsPage() {
         flexDirection: "column",
         position: "relative",
         width: "100%",
-        overflowY: "scroll"
+        overflowY: "scroll",
       }}
     >
-      {ProjectSections.map((section, index, array) => (
+      {projectSections.map((section, index, array) => (
         <React.Fragment key={index}>
           <ProjectSection
             title={section.title}

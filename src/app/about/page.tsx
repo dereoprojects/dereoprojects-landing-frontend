@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Container } from "@mui/material";
+import { Container, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
 import Wave from "@/components/Wave/Wave";
 import AboutSection from "./aboutSection";
@@ -9,6 +9,8 @@ import AboutSection from "./aboutSection";
 import { AboutSections } from "../constants/sections";
 
 export default function AboutPage() {
+  const theme = useTheme();
+  const aboutSections = AboutSections(theme);
   return (
     <Container
       component={motion.div}
@@ -25,7 +27,7 @@ export default function AboutPage() {
         overflowY: "scroll",
       }}
     >
-      {AboutSections.map((section, index, array) => (
+      {aboutSections.map((section, index, array) => (
         <React.Fragment key={index}>
           <AboutSection
             title={section.title}

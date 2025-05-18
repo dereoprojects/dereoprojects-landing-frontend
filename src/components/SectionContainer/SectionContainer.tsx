@@ -1,5 +1,11 @@
 import { Box } from "@mui/material";
-import { motion, MotionValue, useTransform } from "framer-motion";
+import {
+  motion,
+  MotionValue,
+  useTransform,
+  useMotionValueEvent,
+} from "framer-motion";
+import { useEffect, useState } from "react";
 
 interface SectionContainerProps {
   children: React.ReactNode;
@@ -11,15 +17,28 @@ interface SectionContainerProps {
   fadeOutEnd: number;
 }
 
-const SectionContainer = ({ 
-  children, 
-  id, 
+const SectionContainer = ({
+  children,
+  id,
   scrollProgress,
   fadeInStart,
   fadeInEnd,
   fadeOutStart,
   fadeOutEnd,
 }: SectionContainerProps) => {
+  const [visible, setVisible] = useState(false);
+
+  useMotionValueEvent(scrollProgress, "change", (latest) => {
+    const isVisible = latest >= fadeInStart && latest <= fadeOutEnd;
+    setVisible(isVisible);
+  });
+
+  useEffect(() => {
+    const initial = scrollProgress.get();
+    const isVisible = initial >= fadeInStart && initial <= fadeOutEnd;
+    setVisible(isVisible);
+  }, []);
+
   const opacity = useTransform(
     scrollProgress,
     [fadeInStart, fadeInEnd, fadeOutStart, fadeOutEnd],
@@ -39,9 +58,11 @@ const SectionContainer = ({
         right: 0,
         bottom: 0,
         pt: 7,
+        pointerEvents: visible ? "auto" : "none",
+        visibility: visible ? "visible" : "hidden",
       }}
       style={{
-        opacity
+        opacity,
       }}
     >
       <Box
@@ -49,7 +70,7 @@ const SectionContainer = ({
           width: "100%",
           height: {
             xs: "80%",
-            md: "60%"
+            md: "60%",
           },
           padding: "0 2rem",
           display: "flex",
@@ -65,4 +86,4 @@ const SectionContainer = ({
   );
 };
 
-export default SectionContainer; 
+export default SectionContainer;

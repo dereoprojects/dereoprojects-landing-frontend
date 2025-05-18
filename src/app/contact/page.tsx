@@ -1,7 +1,13 @@
 "use client";
 
 import React from "react";
-import { Container, Typography, Box, Link as MuiLink } from "@mui/material";
+import {
+  Container,
+  Typography,
+  Box,
+  Link as MuiLink,
+  alpha,
+} from "@mui/material";
 import { motion } from "framer-motion";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import PhoneIcon from "@mui/icons-material/Phone";
@@ -43,6 +49,8 @@ export default function ContactPage() {
           justifyContent: "center",
           gap: 2,
           pt: 2,
+          width: "100%",
+          backgroundColor: alpha(theme.palette.secondary.main, 0.7)
         }}
       >
         {/* Phone */}
@@ -168,10 +176,6 @@ export default function ContactPage() {
             View Resumé
           </MuiLink>
         </Box>
-      </Box>
-
-      <Box sx={{ width: "100%", overflow: "hidden" }}>
-        <Wave color={theme.palette.accent2.main} />
       </Box>
     </Container>
   );

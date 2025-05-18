@@ -1,7 +1,7 @@
-import { Box, SvgIcon, Typography } from "@mui/material";
+import { alpha, Box, SvgIcon, Typography } from "@mui/material";
 import { motion, useScroll, useTransform } from "framer-motion";
 import React from "react";
-
+import { useTheme } from "@mui/material/styles";
 const AboutSection = ({
   title,
   text,
@@ -17,6 +17,7 @@ const AboutSection = ({
   last?: boolean;
   reversed?: boolean;
 }) => {
+  const theme = useTheme();
   const ref = React.useRef(null);
   const { scrollYProgress: enterScrollProgress } = useScroll({
     target: ref,
@@ -65,7 +66,9 @@ const AboutSection = ({
         width: "100%",
         position: "relative",
         overflow: "visible",
-        backgroundColor: reversed ? "accent2.main" : "secondary.main",
+        backgroundColor: reversed 
+          ? alpha(theme.palette.accent2.main, 0.7)
+          : alpha(theme.palette.secondary.main, 0.7),
       }}
     >
       {/* Left Side: Content */}
