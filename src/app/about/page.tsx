@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Container, useTheme } from "@mui/material";
+import { alpha, Box, Container, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
 import Wave from "@/components/Wave/Wave";
 import AboutSection from "./aboutSection";
@@ -27,6 +27,7 @@ export default function AboutPage() {
         overflowY: "scroll",
       }}
     >
+      <Box sx={{ paddingTop: { xs: "56px", sm: "64px" }, backgroundColor: alpha(theme.palette.secondary.main, 0.7) }} />
       {aboutSections.map((section, index, array) => (
         <React.Fragment key={index}>
           <AboutSection

@@ -20,7 +20,7 @@ const ProjectSection = ({
   const ref = React.useRef(null);
   const { scrollYProgress: enterScrollProgress } = useScroll({
     target: ref,
-    offset: ["start end", last ? "0.7 end" :  "end end"],
+    offset: ["start end", last ? "0.9 end" :  "end end"],
   });
 
   const { scrollYProgress: exitScrollProgress } = useScroll({

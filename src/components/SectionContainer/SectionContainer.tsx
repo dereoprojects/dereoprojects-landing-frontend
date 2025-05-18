@@ -57,7 +57,7 @@ const SectionContainer = ({
         left: 0,
         right: 0,
         bottom: 0,
-        pt: 7,
+        pt: { xs: 12, sm: 7},
         pointerEvents: visible ? "auto" : "none",
         visibility: visible ? "visible" : "hidden",
       }}

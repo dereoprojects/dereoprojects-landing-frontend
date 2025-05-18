@@ -50,7 +50,10 @@ const ColumnSection = ({
           flex: 1,
           display: "flex",
           flexDirection: "column",
-          justifyContent: "space-between",
+          justifyContent: {
+            xs: "space-between",
+            md: "flex-start", // default for smaller
+          },
           alignItems: {
             xs: "center",
             md: "flex-start",
@@ -59,20 +62,50 @@ const ColumnSection = ({
             xs: "center",
             md: "left",
           },
+          minHeight: {
+            md: "280px", // adjust based on your content size
+          },
         }}
       >
-        <Box sx={{ display: "flex", flexDirection: "column", gap: { xs: 1, md: 3 } }}>
-          <Typography variant="h3" sx={{ fontSize: { xs: 24, md: 32 } }}>{title}</Typography>
-          <Typography sx={{ fontSize: { xs: 16, md: 18 } }}>{description}</Typography>
-        </Box>
-        <Button
-          component={Link}
-          href={buttonLink}
-          variant="outlined"
-          sx={{ mt: 2 }}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: { xs: 1, md: 3 },
+          }}
         >
-          {buttonText}
-        </Button>
+          <Typography variant="h3" sx={{ fontSize: { xs: 24, md: 32 } }}>
+            {title}
+          </Typography>
+          <Typography sx={{ fontSize: { xs: 16, md: 18 } }}>
+            {description}
+          </Typography>
+        </Box>
+        <Box
+          sx={{
+            mt: 2,
+            flexGrow: {
+              xs: 0,
+              md: 1,
+            },
+            display: "flex",
+            alignItems: {
+              xs: "center",
+              md: "flex-start",
+            },
+            justifyContent: {
+              xs: "center",
+              md: "flex-start",
+            },
+            pb: { xs: 0, md: 3 },
+          }}
+        >
+          <Box sx={{ mt: { xs: 2, md: "auto" } }}>
+            <Button component={Link} href={buttonLink} variant="outlined">
+              {buttonText}
+            </Button>
+          </Box>
+        </Box>
       </Box>
     </Box>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Container, useTheme } from "@mui/material";
+import { alpha, Box, Container, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
 import Wave from "@/components/Wave/Wave";
 import ProjectSection from "./projectSection";
@@ -26,6 +26,7 @@ export default function ProjectsPage() {
         overflowY: "scroll",
       }}
     >
+      <Box sx={{ height: { xs: "56px", sm: "64px" }, width: "100%", backgroundColor: alpha(theme.palette.secondary.main, 0.7) }} />
       {projectSections.map((section, index, array) => (
         <React.Fragment key={index}>
           <ProjectSection
