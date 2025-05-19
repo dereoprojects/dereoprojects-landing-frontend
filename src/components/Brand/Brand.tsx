@@ -11,21 +11,26 @@ import { Container } from "@mui/material";
 interface BrandProps {
   shining?: boolean;
   color?: string;
+  size?: number;
 }
 
-const Brand: React.FC<BrandProps> = ({ shining = false, color = "primary.main" }) => {
+const Brand: React.FC<BrandProps> = ({ 
+  shining = false, 
+  color = "primary.main",
+  size = 40 
+}) => {
   return (
     <Box display="flex" alignItems="center" gap={1}>
       {/* Dereo Icon */}
-      <Container disableGutters sx={{ height: "40px" }}>
+      <Container disableGutters sx={{ height: `${size}px` }}>
         <BrandIcon shining={shining} />
       </Container>
       {/* Dereo Text */}
       <SvgIcon
-        component={DereoText} // Pass the SVG component
+        component={DereoText}
         inheritViewBox
         fontSize="large"
-        sx={{ color: color, height: "40px", width: "auto" }}
+        sx={{ color: color, height: `${size}px`, width: "auto" }}
       />
     </Box>
   );

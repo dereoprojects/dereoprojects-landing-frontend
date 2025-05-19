@@ -89,11 +89,11 @@ const ResponsiveAppBar: React.FC<ResponsiveAppBarProps> = ({}) => {
               sx={{
                 position: "absolute",
                 left: { xs: "50%", sm: "10px" },
-                top: "10px",
+                top: "13px",
                 transform: { xs: "translateX(-50%)", sm: "none" },
                 justifyContent: "center",
                 alignItems: "center",
-                height: { xs: "55%", sm: "100%" },
+                height: { xs: "auto", sm: "auto" },
                 opacity: isDrawerOpen ? 0 : 1,
                 pointerEvents: isDrawerOpen ? "none" : "auto",
                 transition: isDrawerOpen 
@@ -117,7 +117,7 @@ const ResponsiveAppBar: React.FC<ResponsiveAppBarProps> = ({}) => {
                     userSelect: 'none'
                   }}
                 >
-                  <Brand />
+                  <Brand size={isMobile ? 32 : 36} />
                 </Link>
               </Box>
             </Box>
