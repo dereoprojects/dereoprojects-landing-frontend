@@ -14,7 +14,6 @@ const InnerNavigateButton: React.FC<InnerNavigateButtonProps> = ({
   navigate,
   label,
   icon,
-  reversed = false,
 }) => {
   const [hovered, setHovered] = useState(false);
   const [tapped, setTapped] = useState(false);

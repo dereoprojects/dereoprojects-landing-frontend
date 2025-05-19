@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Main from "./Main";
 import ResponsiveAppBar from "@/components/ResponsiveAppBar/ResponsiveAppBar";
 

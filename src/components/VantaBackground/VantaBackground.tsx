@@ -3,10 +3,22 @@ import { useRef, useEffect, useCallback } from "react";
 import * as THREE from "three";
 import { useScroll } from "framer-motion";
 
+interface VantaEffect {
+  destroy: () => void;
+  setOptions: (options: {
+    skyColor: string;
+    cloudColor: string;
+    cloudShadowColor: string;
+    sunColor: string;
+    sunGlareColor: string;
+    sunlightColor: string;
+  }) => void;
+}
+
 const VantaBackground = () => {
   const theme = useTheme();
   const heroRef = useRef<HTMLDivElement>(null);
-  const vantaRef = useRef<any>(null);
+  const vantaRef = useRef<VantaEffect | null>(null);
   const { scrollYProgress } = useScroll();
 
   const skyColorStart = theme.palette.secondary.main;
@@ -38,7 +50,7 @@ const VantaBackground = () => {
 
     if (!vantaRef.current && heroRef.current) {
       import("vanta/dist/vanta.clouds.min").then((VANTA) => {
-        if (!mounted) return;
+        if (!mounted || !heroRef.current) return;
 
         const effect = VANTA.default({
           el: heroRef.current,
@@ -64,16 +76,16 @@ const VantaBackground = () => {
       mounted = false;
       cleanupVanta();
     };
-  }, [cleanupVanta, theme]);
+  }, [cleanupVanta, theme, skyColorStart, cloudColorStart, cloudShadowColorStart, sunColorStart]);
 
   // Animate colors on scroll
   useEffect(() => {
-    let currentSky = new THREE.Color(skyColorStart);
-    let currentCloud = new THREE.Color(cloudColorStart);
-    let currentCloudShadow = new THREE.Color(cloudShadowColorStart);
-    let currentSun = new THREE.Color(sunColorStart);
-    let currentSunGlare = new THREE.Color(sunGlareColorStart);
-    let currentSunlight = new THREE.Color(sunlightColorStart);
+    const currentSky = new THREE.Color(skyColorStart);
+    const currentCloud = new THREE.Color(cloudColorStart);
+    const currentCloudShadow = new THREE.Color(cloudShadowColorStart);
+    const currentSun = new THREE.Color(sunColorStart);
+    const currentSunGlare = new THREE.Color(sunGlareColorStart);
+    const currentSunlight = new THREE.Color(sunlightColorStart);
 
     const update = () => {
       const t = Math.max(0, Math.min(1, scrollYProgress.get()));
@@ -126,7 +138,7 @@ const VantaBackground = () => {
     };
 
     requestAnimationFrame(update);
-  }, [scrollYProgress]);
+  }, [scrollYProgress, skyColorStart, cloudColorStart, cloudShadowColorStart, sunColorStart, skyColorEnd, cloudColorEnd, cloudShadowColorEnd, sunColorEnd, sunGlareColorStart, sunGlareColorEnd, sunlightColorStart, sunlightColorEnd]);
 
   return (
     <div

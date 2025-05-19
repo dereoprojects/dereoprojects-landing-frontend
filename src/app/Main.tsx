@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { Drawer, Box, Container, Toolbar } from "@mui/material";
-import AppbarNavigation from "@/components/ResponsiveAppBar/AppbarNavigation";
+import { Container } from "@mui/material";
 import VantaBackground from "@/components/VantaBackground/VantaBackground";
 
 interface MainProps {

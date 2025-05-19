@@ -17,7 +17,6 @@ const AppbarNavigation: React.FC<AppbarNavigationProps> = ({
   value = "",
   backgroundColor = "transparent",
   defaultColor = "primary.main",
-  selectedColor = "accent.main",
 }) => {
   const pathname = usePathname();
   const isSelected = pathname === value;

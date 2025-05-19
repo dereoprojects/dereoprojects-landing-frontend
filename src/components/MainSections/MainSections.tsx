@@ -1,13 +1,8 @@
 import {
   Box,
   Container,
-  Typography,
-  Button,
-  Card,
-  CardContent,
 } from "@mui/material";
-import { motion, MotionValue, useTransform } from "framer-motion";
-import Link from "next/link";
+import { MotionValue } from "framer-motion";
 import HeroSection from "./heroSection";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import ColumnSection from "./columnSection";

@@ -10,9 +10,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import AppbarNavigation from "./AppbarNavigation";
 
-interface ResponsiveAppBarProps {}
 
-const ResponsiveAppBar: React.FC<ResponsiveAppBarProps> = ({}) => {
+const ResponsiveAppBar: React.FC = ({}) => {
   const theme = useTheme(); // Access the theme
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);

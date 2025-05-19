@@ -3,7 +3,6 @@
 import React from "react";
 import {
   Container,
-  Typography,
   Box,
   Link as MuiLink,
   alpha,
@@ -16,7 +15,6 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 import DescriptionIcon from "@mui/icons-material/Description";
 import { useTheme } from "@mui/material/styles";
-import Wave from "@/components/Wave/Wave";
 import { ContactData } from "../constants/contact";
 
 export default function ContactPage() {

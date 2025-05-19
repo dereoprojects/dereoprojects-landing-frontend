@@ -37,7 +37,7 @@ const SectionContainer = ({
     const initial = scrollProgress.get();
     const isVisible = initial >= fadeInStart && initial <= fadeOutEnd;
     setVisible(isVisible);
-  }, []);
+  }, [fadeInStart, fadeOutEnd, scrollProgress]);
 
   const opacity = useTransform(
     scrollProgress,
