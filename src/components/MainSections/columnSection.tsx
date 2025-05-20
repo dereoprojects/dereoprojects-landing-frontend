@@ -51,9 +51,10 @@ const ColumnSection = ({
           display: "flex",
           flexDirection: "column",
           justifyContent: {
-            xs: "space-between",
+            xs: "center",
             md: "flex-start", // default for smaller
           },
+          gap: { xs: 1, md: 0 },
           alignItems: {
             xs: "center",
             md: "flex-start",
@@ -74,10 +75,10 @@ const ColumnSection = ({
             gap: { xs: 1, md: 3 },
           }}
         >
-          <Typography variant="h3" sx={{ fontSize: { xs: 20, md: 32 } }}>
+          <Typography variant="h3" sx={{ fontSize: { xs: 22, md: 32 } }}>
             {title}
           </Typography>
-          <Typography sx={{ fontSize: { xs: 12, md: 18 } }}>
+          <Typography sx={{ fontSize: { xs: 14, md: 18 } }}>
             {description}
           </Typography>
         </Box>
@@ -100,7 +101,7 @@ const ColumnSection = ({
             pb: { xs: 0, md: 3 },
           }}
         >
-          <Box sx={{ mt: { xs: 2, md: "auto" } }}>
+          <Box sx={{ mt: { xs: 1, md: "auto" } }}>
             <Button component={Link} href={buttonLink} variant="outlined">
               {buttonText}
             </Button>

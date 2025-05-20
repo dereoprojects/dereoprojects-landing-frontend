@@ -80,7 +80,7 @@ const MainSections = ({ scrollProgress }: MainSectionsProps) => {
                 md: "space-between",
               },
               alignItems: "stretch",
-              height: "50%",
+              height: {xs: "85%", sm: "50%"},
               width: "100%",
               gap: 4,
               p: { xs: 0, md: 2 },
