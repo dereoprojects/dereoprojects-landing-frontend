@@ -15,6 +15,7 @@ interface SectionContainerProps {
   fadeInEnd: number;
   fadeOutStart: number;
   fadeOutEnd: number;
+  isHero?: boolean;
 }
 
 const SectionContainer = ({
@@ -25,6 +26,7 @@ const SectionContainer = ({
   fadeInEnd,
   fadeOutStart,
   fadeOutEnd,
+  isHero = false,
 }: SectionContainerProps) => {
   const [visible, setVisible] = useState(false);
 
@@ -51,13 +53,12 @@ const SectionContainer = ({
       id={id}
       sx={{
         width: "100%",
-        height: "100vh",
+        height: {xs: "100vh", md: "100vh"},
         position: "absolute",
         top: 0,
         left: 0,
         right: 0,
-        bottom: 0,
-        pt: { xs: 12, sm: 7},
+        pt: { xs: "56px", sm: "64px"},
         pointerEvents: visible ? "auto" : "none",
         visibility: visible ? "visible" : "hidden",
       }}
@@ -69,14 +70,14 @@ const SectionContainer = ({
         sx={{
           width: "100%",
           height: {
-            xs: "80%",
-            md: "60%",
+            xs: "100%",
+            md: "100%",
           },
           padding: "0 2rem",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "center",
+          justifyContent: isHero ? "flex-start" : "center",
           gap: 4,
         }}
       >

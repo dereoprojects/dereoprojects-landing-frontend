@@ -19,6 +19,7 @@ export default function Home() {
         sx={{
           position: "relative",
           zIndex: 1,
+          pt: 10
         }}
       >
         <MainSections scrollProgress={scrollYProgress} />

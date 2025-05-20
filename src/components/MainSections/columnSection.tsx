@@ -40,7 +40,7 @@ const ColumnSection = ({
         flexDirection: "column",
         flex: 1,
         height: {
-          xs: "auto",
+          xs: "100%",
           md: "100%",
         },
       }}
@@ -74,10 +74,10 @@ const ColumnSection = ({
             gap: { xs: 1, md: 3 },
           }}
         >
-          <Typography variant="h3" sx={{ fontSize: { xs: 24, md: 32 } }}>
+          <Typography variant="h3" sx={{ fontSize: { xs: 20, md: 32 } }}>
             {title}
           </Typography>
-          <Typography sx={{ fontSize: { xs: 16, md: 18 } }}>
+          <Typography sx={{ fontSize: { xs: 12, md: 18 } }}>
             {description}
           </Typography>
         </Box>
